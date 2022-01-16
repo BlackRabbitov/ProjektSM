@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.michal.projektsm.MainActivity;
 import com.michal.projektsm.R;
+import com.michal.projektsm.RegisterActivity;
 import com.michal.projektsm.ui.login.LoginViewModel;
 import com.michal.projektsm.ui.login.LoginViewModelFactory;
 import com.michal.projektsm.databinding.ActivityLoginBinding;
@@ -29,7 +30,7 @@ import com.michal.projektsm.databinding.ActivityLoginBinding;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-private ActivityLoginBinding binding;
+    private ActivityLoginBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,10 @@ private ActivityLoginBinding binding;
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+        final Button registerButton = binding.register;
         final ProgressBar loadingProgressBar = binding.loading;
+
+        registerButton.setEnabled(true);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -123,6 +127,14 @@ private ActivityLoginBinding binding;
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+              startActivity(intent);
+          }
         });
     }
 
