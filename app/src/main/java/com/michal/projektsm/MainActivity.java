@@ -14,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView msg = (TextView)findViewById(R.id.textView);
         String user = getIntent().getExtras().getString("User Name:");
-        msg.setText("Welcome "+user);
+        msg.setText("Welcome "+user); //a
     }
 }
