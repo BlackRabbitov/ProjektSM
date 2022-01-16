@@ -1,4 +1,4 @@
-package com.michal.projektsm.ui.login;
+package  com.michal.projektsm.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

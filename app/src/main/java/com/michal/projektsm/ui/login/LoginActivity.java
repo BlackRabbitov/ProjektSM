@@ -1,16 +1,14 @@
-package com.michal.projektsm.ui.login;
+package  com.michal.projektsm.ui.login;
 
 import android.app.Activity;
-
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -22,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.michal.projektsm.MainActivity;
 import com.michal.projektsm.R;
 import com.michal.projektsm.ui.login.LoginViewModel;
 import com.michal.projektsm.ui.login.LoginViewModelFactory;
@@ -30,14 +29,14 @@ import com.michal.projektsm.databinding.ActivityLoginBinding;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    private ActivityLoginBinding binding;
+private ActivityLoginBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+     binding = ActivityLoginBinding.inflate(getLayoutInflater());
+     setContentView(binding.getRoot());
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -79,7 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                 setResult(Activity.RESULT_OK);
 
                 //Complete and destroy login activity once successful
-                finish();
+                //finish();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("User Name:", usernameEditText.getText().toString());
+                startActivity(intent);
             }
         });
 
