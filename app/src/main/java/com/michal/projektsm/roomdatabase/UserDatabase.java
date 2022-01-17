@@ -7,7 +7,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {UserEntity.class}, version = 2)
+@Database(entities = {UserEntity.class, BillEntity.class}, version = 3)
 public abstract class UserDatabase extends RoomDatabase{
 
     private static final String dbName = "user";
@@ -23,4 +23,6 @@ public abstract class UserDatabase extends RoomDatabase{
     }
 
     public abstract UserDao userDao();
+
+    public abstract  BillDao billDao();
 }
