@@ -20,8 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:hint="Enter UserId"
+        android:hint="Enter Username"
         android:id="@+id/userId" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress"
+        android:id="@+id/email" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint="Enter Name"
+        android:id="@+id/name" />
 
     <EditText
         android:inputType="textPassword"
@@ -31,17 +46,17 @@
         android:hint="Enter Password"
         android:id="@+id/password" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:hint="Enter Name"
-        android:id="@+id/name" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:text="Register"
         android:id="@+id/register"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:text="Login"
+        android:id="@+id/login"/>
 </LinearLayout>

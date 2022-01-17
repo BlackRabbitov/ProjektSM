@@ -1,5 +1,7 @@
 package com.michal.projektsm.roomdatabase;
 
+import android.provider.ContactsContract;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -17,6 +19,9 @@ public class UserEntity {
 
     @ColumnInfo(name = "name")
     String name;
+
+    @ColumnInfo(name = "email")
+    String email;
 
     public Integer getId() {
         return id;
@@ -48,5 +53,13 @@ public class UserEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

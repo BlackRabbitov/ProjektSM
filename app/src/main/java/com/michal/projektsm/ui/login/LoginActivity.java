@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.service.autofill.UserData;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -23,6 +25,9 @@ import android.widget.Toast;
 import com.michal.projektsm.MainActivity;
 import com.michal.projektsm.R;
 import com.michal.projektsm.RegisterActivity;
+import com.michal.projektsm.roomdatabase.UserDao;
+import com.michal.projektsm.roomdatabase.UserDatabase;
+import com.michal.projektsm.roomdatabase.UserEntity;
 import com.michal.projektsm.ui.login.LoginViewModel;
 import com.michal.projektsm.ui.login.LoginViewModelFactory;
 import com.michal.projektsm.databinding.ActivityLoginBinding;
@@ -123,9 +128,34 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+                /*loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        passwordEditText.getText().toString());*/
+                String userNameText = usernameEditText.getText().toString();
+                String passwordText = passwordEditText.getText().toString();
+                if(userNameText.isEmpty() || passwordText.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
+                } else {
+                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                    UserDao userDao = userDatabase.userDao();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UserEntity userEntity = userDao.login(userNameText, passwordText);
+                            if(userEntity == null){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "Wrong username/email or password!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } else {
+                                String name = userEntity.getName();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("name", name));
+                            }
+                        }
+                    }).start();
+                }
             }
         });
 
