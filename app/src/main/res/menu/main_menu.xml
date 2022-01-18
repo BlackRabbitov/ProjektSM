@@ -33,7 +33,7 @@
                 <item
                     android:id="@+id/nav_dept"
                     android:icon="@drawable/deptors_icon"
-                    android:title="Deptors" />
+                    android:title="Debtors" />
                 <item
                     android:id="@+id/nav_expenses"
                     android:icon="@drawable/expenses_icon"

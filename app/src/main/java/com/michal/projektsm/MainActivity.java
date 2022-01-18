@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -41,9 +42,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -56,8 +56,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    //options menu switch activity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.nav_home:
+            break;
+            case R.id.nav_currency:
+                Intent intent = new Intent(MainActivity.this, Currency.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_cat:
+                intent = new Intent(MainActivity.this, Categories.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_dept:
+                intent = new Intent(MainActivity.this, Debtors.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_expenses:
+                intent = new Intent(MainActivity.this, Expenses.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_notifications:
+                intent = new Intent(MainActivity.this, Notifications.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_user:
+                intent = new Intent(MainActivity.this, Profile.class);
+                startActivity(intent);
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

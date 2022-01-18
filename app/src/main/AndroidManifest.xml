@@ -10,14 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjektSM">
         <activity
+            android:name=".Expenses"
+            android:exported="true" />
+        <activity
+            android:name=".Debtors"
+            android:exported="true" />
+        <activity
+            android:name=".Categories"
+            android:exported="true" />
+        <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".Notifications"
+            android:exported="true" />
+        <activity
+            android:name=".Currency"
+            android:exported="true" />
+        <activity
             android:name=".BorrowerActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".RegisterActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
