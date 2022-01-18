@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjektSM">
         <activity
-            android:name=".BorrowerListActivity"
-            android:exported="false" />
+            android:name=".BorrowerActivity"
+            android:exported="false">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
