@@ -1,7 +1,19 @@
 
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-l
-<app/src/main/java/com/michal/projektsm/RegisterActivity.java,e\1\e1429362d111bfa8e3183e59e1672dac8a445856
 h
 8app/src/main/java/com/michal/projektsm/MainActivity.java,0\e\0e53dc190fee57320c3eefa504564353362c0b21
+p
+@app/src/main/java/com/michal/projektsm/ui/login/LoginResult.java,0\3\03db41ae7471f326490c92f3b795adcc0e5b58ee
+s
+Capp/src/main/java/com/michal/projektsm/ui/login/LoginFormState.java,3\d\3d8e821955a5fff43348c564649e1bbed2a1ef46
+z
+Japp/src/main/java/com/michal/projektsm/ui/login/LoginViewModelFactory.java,f\b\fbeaa1d5d6bfadd3868119f6f3ce39d48d8e5604
+s
+Capp/src/main/java/com/michal/projektsm/ui/login/LoginViewModel.java,8\7\872ecc1ae52b46875f45b67c43352b636f86a11a
+p
+@app/src/main/java/com/michal/projektsm/data/LoginRepository.java,4\1\41a017ed4f7192a6e8da97fae5efc9b6ecb6418a
+p
+@app/src/main/java/com/michal/projektsm/data/LoginDataSource.java,a\6\a6dacf58eb933171ab4f8348f9b02cd49e1539e5
+s
+Capp/src/main/java/com/michal/projektsm/data/model/LoggedInUser.java,c\d\cddeb3936e7a4db862a2d7dd90d393494c2676cf
