@@ -24,14 +24,14 @@ import java.util.List;
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
 
-    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-    UserDao userDao = userDatabase.userDao();
-
     RecyclerView borrowersView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrowers);
+
+        UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+        UserDao userDao = userDatabase.userDao();
 
         /*List<DebtEntity> borrowers = new ArrayList<>();
         borrowers.add(new DebtEntity("Name", 1));
@@ -46,7 +46,7 @@ public class BorrowerActivity extends AppCompatActivity {
         borrowers.add(new DebtEntity("Name", 10));
         borrowers.add(new DebtEntity("Name", 11));*/
 
-        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists("User");
+        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists("Museldray");
         List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);

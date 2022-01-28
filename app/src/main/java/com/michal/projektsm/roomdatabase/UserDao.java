@@ -13,9 +13,6 @@ public interface UserDao {
     @Insert
     void registerUser(UserEntity userEntity);
 
-    @Insert
-    void addDebt(DebtEntity debtEntity);
-
     @Query("SELECT * FROM users WHERE userName=(:userName) AND password=(:password)")
     UserEntity login(String userName, String password);
 
