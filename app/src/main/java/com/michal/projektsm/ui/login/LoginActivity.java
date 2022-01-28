@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.michal.projektsm.MainActivity;
 import com.michal.projektsm.R;
 import com.michal.projektsm.RegisterActivity;
+import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.UserDao;
 import com.michal.projektsm.roomdatabase.UserDatabase;
 import com.michal.projektsm.roomdatabase.UserEntity;
@@ -151,6 +152,8 @@ public class LoginActivity extends AppCompatActivity {
                                 });
                             } else {
                                 String name = userEntity.getName();
+                                ActiveUser activeUser = ActiveUser.getInstance();
+                                activeUser.setUser(userEntity);
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("name", name));
                             }
                         }

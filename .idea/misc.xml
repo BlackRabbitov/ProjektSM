@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dawid Stuczyk/Documents/StudiaNAUKA/III rok/V semestr/Systemy mobilne/ProjektSM/app/src/main/res/layout/activity_borrowers.xml" value="0.36666666666666664" />
         <entry key="..\:/Dawid Stuczyk/Documents/StudiaNAUKA/III rok/V semestr/Systemy mobilne/ProjektSM/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Dawid Stuczyk/Documents/StudiaNAUKA/III rok/V semestr/Systemy mobilne/ProjektSM/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Dawid Stuczyk/Documents/StudiaNAUKA/III rok/V semestr/Systemy mobilne/ProjektSM/app/src/main/res/layout/activity_register.xml" value="0.2328125" />
@@ -12,11 +11,18 @@
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout-w936dp/activity_login.xml" value="0.22301912568306012" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_borrower_list.xml" value="0.22" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_borrowers.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_categories.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_currency.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_debtors.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_expenses.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_login.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_notifications.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_profile.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/header.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/layout/item_borrower.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/menu/main_menu.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/Users/piotr/AndroidStudioProjects/ProjektSM/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
       </map>
