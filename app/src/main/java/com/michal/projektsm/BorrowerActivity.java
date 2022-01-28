@@ -47,7 +47,7 @@ public class BorrowerActivity extends AppCompatActivity {
         borrowers.add(new DebtEntity("Name", 10));
         borrowers.add(new DebtEntity("Name", 11));*/
 
-        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists(ActiveUser.getInstance().getUser().getName());
+        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists(ActiveUser.getInstance().getUser().getUserName());
         List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
