@@ -14,6 +14,9 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.michal.projektsm.roomdatabase.DebtEntity;
+import com.michal.projektsm.roomdatabase.UserDao;
+import com.michal.projektsm.roomdatabase.UserDatabase;
+import com.michal.projektsm.roomdatabase.UserWithDebts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +24,16 @@ import java.util.List;
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
 
+    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+    UserDao userDao = userDatabase.userDao();
+
     RecyclerView borrowersView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrowers);
 
-        List<DebtEntity> borrowers = new ArrayList<>();
+        /*List<DebtEntity> borrowers = new ArrayList<>();
         borrowers.add(new DebtEntity("Name", 1));
         borrowers.add(new DebtEntity("Name", 2));
         borrowers.add(new DebtEntity("Name", 3));
@@ -38,8 +44,10 @@ public class BorrowerActivity extends AppCompatActivity {
         borrowers.add(new DebtEntity("Name", 8));
         borrowers.add(new DebtEntity("Name", 9));
         borrowers.add(new DebtEntity("Name", 10));
-        borrowers.add(new DebtEntity("Name", 11));
+        borrowers.add(new DebtEntity("Name", 11));*/
 
+        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists("User");
+        List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
         BorrowerAdapter adapter = new BorrowerAdapter(borrowers);
