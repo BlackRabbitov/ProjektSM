@@ -15,7 +15,6 @@
             android:icon="@drawable/calc_icon"
             android:title="Calculator" />
     </group>
-
         <item android:title="Profile">
             <menu>
                 <group android:checkableBehavior="single">
