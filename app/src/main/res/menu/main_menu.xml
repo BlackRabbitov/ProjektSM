@@ -10,6 +10,10 @@
             android:id="@+id/nav_notifications"
             android:icon="@drawable/notifications_icon"
             android:title="Notifications" />
+        <item
+            android:id="@+id/nav_calc"
+            android:icon="@drawable/calc_icon"
+            android:title="Calculator" />
     </group>
 
         <item android:title="Profile">

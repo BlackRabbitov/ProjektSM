@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -91,6 +92,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_user:
                 intent = new Intent(MainActivity.this, Profile.class);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_calc:
+                Uri webpage = Uri.parse("https://calc.pl/");
+                intent = new Intent(Intent.ACTION_VIEW, webpage);
+                if(intent != null)
+                {
+                    startActivity(intent);
+                }
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
