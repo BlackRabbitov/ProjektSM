@@ -3,12 +3,14 @@ l
 <app/src/main/java/com/michal/projektsm/RegisterActivity.java,e\1\e1429362d111bfa8e3183e59e1672dac8a445856
 u
 Eapp/src/main/java/com/michal/projektsm/roomdatabase/UserDatabase.java,0\a\0a95c906af540799f6283074ac4c15f83f8f7e16
+
+k
+;app/src/main/java/com/michal/projektsm/BorrowerAdapter.java,b\7\b73ebeadfa9529304e2054c1303c8ba48512d8c2
+
 l
 <app/src/main/java/com/michal/projektsm/BorrowerActivity.java,a\a\aaaa582301951d0778548ed0e90648bf7aadfbd8
 d
 4app/src/main/java/com/michal/projektsm/Currency.java,9\a\9acbbb96b52d174e4c2fa6e0c9fe6f11d3c81114
-d
-4app/src/main/java/com/michal/projektsm/Expenses.java,e\5\e598ef788cca3df14c275f5f96971c071f9414cb
 c
 3app/src/main/java/com/michal/projektsm/Debtors.java,b\e\be26997693b2faae4df92cdb86efaf15b0ee87ed
 c
@@ -23,3 +25,7 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 h
 8app/src/main/java/com/michal/projektsm/MainActivity.java,0\e\0e53dc190fee57320c3eefa504564353362c0b21
+f
+6app/src/main/java/com/michal/projektsm/Categories.java,6\b\6bc49122a268c192aae08213063298954cf6df1e
+i
+9app/src/main/java/com/michal/projektsm/Notifications.java,b\b\bbce4c54f756479e2f6f05ade2b2cd71aa768973

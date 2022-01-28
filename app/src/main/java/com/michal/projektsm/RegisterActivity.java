@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.service.autofill.UserData;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.michal.projektsm.roomdatabase.UserDao;
@@ -40,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v){
                 // Create user entity
                 UserEntity userEntity = new UserEntity();
-                userEntity.setUserId(userId.getText().toString());
+                userEntity.setUserName(userId.getText().toString());
                 userEntity.setPassword(password.getText().toString());
                 userEntity.setName(name.getText().toString());
                 userEntity.setEmail(email.getText().toString());
