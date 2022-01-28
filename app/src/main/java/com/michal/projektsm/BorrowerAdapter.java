@@ -9,29 +9,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.michal.projektsm.roomdatabase.DebtEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHolder> {
     public static final String TAG = "BorrowerAdapter";
-    private List<String> mDataSet;
+    private List<DebtEntity> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView nameTextView;
+        private final TextView amountTextView;
 
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
             v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));
-            textView = (TextView) v.findViewById(R.id.borrowerName);
+            nameTextView = (TextView) v.findViewById(R.id.borrowerName);
+            amountTextView = (TextView) v.findViewById(R.id.borrowerAmount);
         }
 
-        public TextView getTextView() {
-            return textView;
+        public TextView getNameTextView() {
+            return nameTextView;
+        }
+        public TextView getAmountTextView() {
+            return amountTextView;
         }
     }
 
-    public BorrowerAdapter(List<String> dataSet) {
+    public BorrowerAdapter(List<DebtEntity> dataSet) {
         mDataSet = dataSet;
     }
 
@@ -54,7 +61,9 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        viewHolder.getTextView().setText(mDataSet.get(position));
+        viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
+        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
+        Log.d(TAG, "Element " + position + " set!!!");
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
