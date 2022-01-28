@@ -2,6 +2,7 @@ package com.michal.projektsm.roomdatabase;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
@@ -16,7 +17,7 @@ public abstract class UserDao {
         insertAllDebts(userWithDebts.getDebts());
     }
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract void insertAllDebts(List<DebtEntity> debts);
 
     @Query("SELECT id FROM users WHERE userName=(:userName)")
