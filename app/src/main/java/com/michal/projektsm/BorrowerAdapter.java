@@ -63,7 +63,6 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         // with that element
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
-        Log.d(TAG, "Element " + position + " set!!!");
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
