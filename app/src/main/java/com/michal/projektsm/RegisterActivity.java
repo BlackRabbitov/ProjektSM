@@ -56,6 +56,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), "Registration completed!", Toast.LENGTH_SHORT).show();
+                                        userId.setText(null);
+                                        password.setText(null);
+                                        name.setText(null);
+                                        email.setText(null);
                                     }
                                 });
                             }
@@ -73,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
             }
         });
     }

@@ -22,9 +22,6 @@
             android:name=".Profile"
             android:exported="true" />
         <activity
-            android:name=".Notifications"
-            android:exported="true" />
-        <activity
             android:name=".Currency"
             android:exported="true" />
         <activity
