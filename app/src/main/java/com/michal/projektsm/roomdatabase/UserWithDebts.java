@@ -12,4 +12,20 @@ public class UserWithDebts {
             entityColumn = "owner"
     )
     public List<DebtEntity> debts;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public List<DebtEntity> getDebts() {
+        return debts;
+    }
+
+    public void setDebts(List<DebtEntity> debts) {
+        this.debts = debts;
+    }
 }

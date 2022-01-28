@@ -54,4 +54,10 @@ public class DebtEntity {
     public void setUserCreatorId(long userCreatorId) {
         this.userCreatorId = userCreatorId;
     }
+    public DebtEntity (String borrower, Integer amount)
+    {
+        this.borrower = borrower;
+        this.amount = amount;
+    }
+    public DebtEntity() {}
 }
