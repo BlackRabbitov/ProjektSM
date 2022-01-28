@@ -58,8 +58,9 @@ public class BorrowerActivity extends AppCompatActivity {
         OnClickListener btnClick = v -> {
             DebtEntity debt1 = new DebtEntity();
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
-            debt1.setAmount(Integer.parseInt(((TextView)findViewById(R.id.etAmount)).getText().toString()));
-            borrowers.add(debt1);
+            debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
+            userWithDebtsList.get(0).getDebts().add(debt1);
+            userDao.insert(userWithDebtsList.get(0));
             adapter.notifyItemInserted(borrowers.size() - 1);
             Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
         };

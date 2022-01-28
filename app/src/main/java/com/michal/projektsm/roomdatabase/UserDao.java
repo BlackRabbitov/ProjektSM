@@ -8,15 +8,27 @@ import androidx.room.Transaction;
 import java.util.List;
 
 @Dao
-public interface UserDao {
+public abstract class UserDao {
+
+    public void insert(UserWithDebts userWithDebts){
+        long id = getUserId(userWithDebts.getUser().getUserName());
+        userWithDebts.getDebts().forEach(i->i.setUserCreatorId(id));
+        insertAllDebts(userWithDebts.getDebts());
+    }
 
     @Insert
-    void registerUser(UserEntity userEntity);
+    abstract void insertAllDebts(List<DebtEntity> debts);
+
+    @Query("SELECT id FROM users WHERE userName=(:userName)")
+    abstract long getUserId(String userName);
+
+    @Insert
+    public abstract void registerUser(UserEntity userEntity);
 
     @Query("SELECT * FROM users WHERE userName=(:userName) AND password=(:password)")
-    UserEntity login(String userName, String password);
+    public abstract UserEntity login(String userName, String password);
 
     @Transaction
     @Query("SELECT * FROM users WHERE userName=(:userName)")
-    List<UserWithDebts> getUserWithDebtsLists(String userName);
+    public abstract List<UserWithDebts> getUserWithDebtsLists(String userName);
 }

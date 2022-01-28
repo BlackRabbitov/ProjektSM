@@ -9,7 +9,8 @@ public class UserWithDebts {
     @Embedded public UserEntity user;
     @Relation(
             parentColumn = "id",
-            entityColumn = "owner"
+            entityColumn = "owner",
+            entity = DebtEntity.class
     )
     public List<DebtEntity> debts;
 

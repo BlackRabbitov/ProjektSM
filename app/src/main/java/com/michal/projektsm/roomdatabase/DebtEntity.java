@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 @Entity(tableName = "Debtors")
 public class DebtEntity {
     @PrimaryKey(autoGenerate = true)
-    Integer id;
+    long id;
 
     @ColumnInfo(name = "borrower")
     String borrower;
@@ -21,21 +21,21 @@ public class DebtEntity {
     long userCreatorId;
 
     @ColumnInfo(name = "amount")
-    Integer amount;
+    Float amount;
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Integer getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 
@@ -54,7 +54,7 @@ public class DebtEntity {
     public void setUserCreatorId(long userCreatorId) {
         this.userCreatorId = userCreatorId;
     }
-    public DebtEntity (String borrower, Integer amount)
+    public DebtEntity (String borrower, Float amount)
     {
         this.borrower = borrower;
         this.amount = amount;
