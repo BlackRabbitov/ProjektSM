@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_dept:
-                intent = new Intent(MainActivity.this, Debtors.class);
+                intent = new Intent(MainActivity.this, BorrowerActivity.class);
                 startActivity(intent);
                 break;
 
@@ -85,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_notifications:
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Notifications")
+                        .setSmallIcon(R.drawable.notification_use_icon)
+                        .setContentTitle("PaymentManager calling")
+                        .setContentText("Check this new handsome looking notification")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
                 intent = new Intent(MainActivity.this, Notifications.class);
                 startActivity(intent);
                 break;
