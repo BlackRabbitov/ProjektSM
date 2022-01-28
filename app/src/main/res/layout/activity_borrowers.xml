@@ -21,7 +21,7 @@
         android:id="@+id/etBorrower"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="New Borrower"
+        android:hint="@string/borrower"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etAmount"
@@ -31,7 +31,7 @@
         android:id="@+id/etAmount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Amount"
+        android:hint="@string/amount"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddBorrower"
@@ -42,7 +42,7 @@
         android:id="@+id/btnAddBorrower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

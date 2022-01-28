@@ -10,8 +10,23 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="action_register">Register</string>
-    <string name="action_forgot_password">Forgot password?</string>
+    <string name="action_login">Login</string>
+    <string name="action_forgot_password">Forgot Password?</string>
+    <string name="register_user">Register User</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_password">Enter Password</string>
 
+    <string name="borrower">Borrower</string>
+    <string name="add_button">Add</string>
+    <string name="amount">Amount</string>
+    <string name="app_name_2">SplitManager</string>
+    <string name="control_your_payments">control your payments</string>
+    <string name="you_owe">you owe</string>
+    <string name="you_are_owed">you are owed</string>
+    <string name="no_money">$0.00</string>
+    <string name="total_balance">total balance</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
