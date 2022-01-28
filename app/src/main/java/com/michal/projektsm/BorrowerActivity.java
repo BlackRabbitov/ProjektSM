@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.DebtEntity;
 import com.michal.projektsm.roomdatabase.UserDao;
 import com.michal.projektsm.roomdatabase.UserDatabase;
@@ -46,7 +47,7 @@ public class BorrowerActivity extends AppCompatActivity {
         borrowers.add(new DebtEntity("Name", 10));
         borrowers.add(new DebtEntity("Name", 11));*/
 
-        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists("Museldray");
+        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists(ActiveUser.getInstance().getUser().getName());
         List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
