@@ -47,7 +47,6 @@ public class BorrowerActivity extends AppCompatActivity {
         borrowers.add(new DebtEntity("Name", 10));
         borrowers.add(new DebtEntity("Name", 11));*/
 
-        ActiveUser u = ActiveUser.getInstance();
         List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists(ActiveUser.getInstance().getUser().getUserName());
         List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
 
