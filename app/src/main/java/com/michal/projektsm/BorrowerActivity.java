@@ -58,9 +58,15 @@ public class BorrowerActivity extends AppCompatActivity {
             }
             if(sameDebtEntity != null){
                 sameDebtEntity.setAmount(sameDebtEntity.getAmount() + debt1.getAmount());
-                database.userDao().updateAmount(sameDebtEntity);
-                adapter.notifyItemChanged(borrowers.indexOf(sameDebtEntity));
-                Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
+                if(sameDebtEntity.getAmount() == 0){
+                    database.userDao().deleteDebt(sameDebtEntity);
+                    adapter.notifyItemRemoved(borrowers.indexOf(sameDebtEntity));
+                    Log.d(TAG, "Debt from borrower: " + debt1.getBorrower() + " paid. Deleting debt");
+                } else {
+                    database.userDao().updateAmount(sameDebtEntity);
+                    adapter.notifyItemChanged(borrowers.indexOf(sameDebtEntity));
+                    Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
+                }
             } else {
                 borrowers.add(debt1);
                 database.userDao().insert(userWithDebts);
