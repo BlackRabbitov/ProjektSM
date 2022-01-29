@@ -53,6 +53,7 @@ public class BorrowerActivity extends AppCompatActivity {
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
             // Check if there is debt with the same name
+            sameDebtEntity = null;
             for (DebtEntity debtEntity : borrowers){
                 if(debtEntity.getBorrower().equals(debt1.getBorrower())){
                     // Notify that there is similar Debt
