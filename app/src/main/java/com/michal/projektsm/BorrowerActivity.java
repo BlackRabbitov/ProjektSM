@@ -59,6 +59,7 @@ public class BorrowerActivity extends AppCompatActivity {
             if(sameDebtEntity != null){
                 sameDebtEntity.setAmount(sameDebtEntity.getAmount() + debt1.getAmount());
                 database.userDao().updateAmount(sameDebtEntity);
+                adapter.notifyDataSetChanged();
                 Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
             } else {
                 borrowers.add(debt1);
