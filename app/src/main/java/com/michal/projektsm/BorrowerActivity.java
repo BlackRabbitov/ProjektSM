@@ -24,6 +24,10 @@ import java.util.List;
 
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
+    UserDatabase database;
+    BorrowerAdapter adapter;
+    List<DebtEntity> borrowers;
+    UserWithDebts userWithDebts;
 
     RecyclerView borrowersView;
     @Override
@@ -31,27 +35,12 @@ public class BorrowerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrowers);
 
-        UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-        UserDao userDao = userDatabase.userDao();
-
-        /*List<DebtEntity> borrowers = new ArrayList<>();
-        borrowers.add(new DebtEntity("Name", 1));
-        borrowers.add(new DebtEntity("Name", 2));
-        borrowers.add(new DebtEntity("Name", 3));
-        borrowers.add(new DebtEntity("Name", 4));
-        borrowers.add(new DebtEntity("Name", 5));
-        borrowers.add(new DebtEntity("Name", 6));
-        borrowers.add(new DebtEntity("Name", 7));
-        borrowers.add(new DebtEntity("Name", 8));
-        borrowers.add(new DebtEntity("Name", 9));
-        borrowers.add(new DebtEntity("Name", 10));
-        borrowers.add(new DebtEntity("Name", 11));*/
-
-        List<UserWithDebts> userWithDebtsList = userDao.getUserWithDebtsLists(ActiveUser.getInstance().getUser().getUserName());
-        List<DebtEntity> borrowers = userWithDebtsList.get(0).getDebts();
+        database = UserDatabase.getUserDatabase(this);
+        userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
+        borrowers = userWithDebts.getDebts();
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
-        BorrowerAdapter adapter = new BorrowerAdapter(borrowers);
+        adapter = new BorrowerAdapter(this, borrowers);
         borrowersView.setAdapter(adapter);
         borrowersView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -60,7 +49,7 @@ public class BorrowerActivity extends AppCompatActivity {
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
             borrowers.add(debt1);
-            userDao.insert(userWithDebtsList.get(0));
+            database.userDao().insert(userWithDebts);
             adapter.notifyItemInserted(borrowers.size() - 1);
             Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
         };

@@ -2,7 +2,10 @@ package com.michal.projektsm;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.RoomDatabase;
 
+import android.app.Activity;
+import android.service.autofill.UserData;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.michal.projektsm.roomdatabase.DebtEntity;
+import com.michal.projektsm.roomdatabase.UserDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +21,8 @@ import java.util.List;
 public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHolder> {
     public static final String TAG = "BorrowerAdapter";
     private List<DebtEntity> mDataSet;
+    private Activity context;
+    private UserDatabase database;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView nameTextView;
@@ -38,8 +44,9 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         }
     }
 
-    public BorrowerAdapter(List<DebtEntity> dataSet) {
-        mDataSet = dataSet;
+    public BorrowerAdapter(Activity context, List<DebtEntity> dataSet) {
+        this.context = context;
+        this.mDataSet = dataSet;
     }
 
     @NonNull
@@ -57,6 +64,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+        database = UserDatabase.getUserDatabase(context);
         Log.d(TAG, "Element " + position + " set.");
 
         // Get element from your dataset at this position and replace the contents of the view
