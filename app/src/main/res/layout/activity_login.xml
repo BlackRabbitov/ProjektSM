@@ -43,9 +43,10 @@
 
     <Button
         android:id="@+id/forgot_password"
-        android:layout_width="151dp"
+        android:layout_width="173dp"
         android:layout_height="35dp"
         android:layout_gravity="start"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
         android:background="#00FFFFFF"
@@ -56,18 +57,18 @@
         android:textIsSelectable="false"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.359" />
 
     <Button
         android:id="@+id/register"
-        android:layout_width="104dp"
-        android:layout_height="34dp"
+        android:layout_width="114dp"
+        android:layout_height="35dp"
         android:layout_gravity="start"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="64dp"
         android:background="#00FFFFFF"
         android:enabled="false"
@@ -77,8 +78,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.762"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/forgot_password"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.358" />
 
