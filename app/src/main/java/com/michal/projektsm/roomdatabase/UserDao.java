@@ -1,10 +1,12 @@
 package com.michal.projektsm.roomdatabase;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -23,13 +25,25 @@ public abstract class UserDao {
     @Query("SELECT id FROM users WHERE userName=(:userName)")
     abstract long getUserId(String userName);
 
+    @Query("SELECT * FROM users WHERE userName=(:userName)")
+    abstract UserEntity getUser(String userName);
+
+    @Delete
+    public abstract void deleteDebt(DebtEntity debtEntity);
+
+    @Update
+    public abstract void updateAmount(DebtEntity debtEntity);
+
     @Insert
     public abstract void registerUser(UserEntity userEntity);
 
     @Query("SELECT * FROM users WHERE userName=(:userName) AND password=(:password)")
     public abstract UserEntity login(String userName, String password);
 
+    @Query("SELECT * FROM users")
+    public abstract List<UserEntity> getAllUsers();
+
     @Transaction
     @Query("SELECT * FROM users WHERE userName=(:userName)")
-    public abstract List<UserWithDebts> getUserWithDebtsLists(String userName);
+    public abstract UserWithDebts getUserWithDebts(String userName);
 }
