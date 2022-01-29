@@ -28,6 +28,7 @@ public class BorrowerActivity extends AppCompatActivity {
     BorrowerAdapter adapter;
     List<DebtEntity> borrowers;
     UserWithDebts userWithDebts;
+    DebtEntity sameDebtEntity = null;
 
     RecyclerView borrowersView;
     @Override
@@ -48,10 +49,23 @@ public class BorrowerActivity extends AppCompatActivity {
             DebtEntity debt1 = new DebtEntity();
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
-            borrowers.add(debt1);
-            database.userDao().insert(userWithDebts);
-            adapter.notifyItemInserted(borrowers.size() - 1);
-            Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
+            // Check if there is debt with the same name
+            for (DebtEntity debtEntity : borrowers){
+                if(debtEntity.getBorrower().equals(debt1.getBorrower())){
+                    // Notify that there is similar Debt
+                    sameDebtEntity = debtEntity;
+                }
+            }
+            if(sameDebtEntity != null){
+                sameDebtEntity.setAmount(sameDebtEntity.getAmount() + debt1.getAmount());
+                database.userDao().updateAmount(sameDebtEntity);
+                Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
+            } else {
+                borrowers.add(debt1);
+                database.userDao().insert(userWithDebts);
+                adapter.notifyItemInserted(borrowers.size() - 1);
+                Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
+            }
         };
         findViewById(R.id.btnAddBorrower).setOnClickListener(btnClick);
     }

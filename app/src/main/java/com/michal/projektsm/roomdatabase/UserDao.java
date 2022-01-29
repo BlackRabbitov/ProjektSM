@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -28,7 +29,10 @@ public abstract class UserDao {
     abstract UserEntity getUser(String userName);
 
     @Delete
-    abstract void deleteDebt(DebtEntity debtEntity);
+    public abstract void deleteDebt(DebtEntity debtEntity);
+
+    @Update
+    public abstract void updateAmount(DebtEntity debtEntity);
 
     @Insert
     public abstract void registerUser(UserEntity userEntity);
