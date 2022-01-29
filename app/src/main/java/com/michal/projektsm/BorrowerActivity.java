@@ -88,7 +88,6 @@ public class BorrowerActivity extends AppCompatActivity {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            Log.d(TAG, viewHolder.getAdapterPosition() + " - pozycja hehe");
             database.userDao().deleteDebt(borrowers.get(viewHolder.getAdapterPosition()));
             borrowers.remove(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();
