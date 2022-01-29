@@ -18,6 +18,8 @@
     <string name="enter_name">Enter Name</string>
     <string name="enter_password">Enter Password</string>
 
+    <string name="currency">zł</string>
+
     <string name="borrower">Borrower</string>
     <string name="add_button">Add</string>
     <string name="amount">Amount</string>

@@ -30,12 +30,9 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
             amountTextView = (TextView) v.findViewById(R.id.borrowerAmount);
         }
 
-        public TextView getNameTextView() {
-            return nameTextView;
+        public TextView getNameTextView() { return nameTextView;
         }
-        public TextView getAmountTextView() {
-            return amountTextView;
-        }
+        public TextView getAmountTextView() { return amountTextView; }
     }
 
     public BorrowerAdapter(List<DebtEntity> dataSet) {
@@ -62,7 +59,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
-        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
+        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount().floatValue()));
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 

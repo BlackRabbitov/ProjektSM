@@ -13,9 +13,6 @@
             android:name=".Expenses"
             android:exported="true" />
         <activity
-            android:name=".Debtors"
-            android:exported="true" />
-        <activity
             android:name=".Categories"
             android:exported="true" />
         <activity
