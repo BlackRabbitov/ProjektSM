@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
@@ -36,14 +37,20 @@ import java.util.List;
 
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
-    UserDatabase database;
-    BorrowerAdapter adapter;
-    List<DebtEntity> borrowers;
-    UserWithDebts userWithDebts;
-    DebtEntity sameDebtEntity;
-    RecyclerView borrowersView;
-
+    private UserDatabase database;
+    private BorrowerAdapter adapter;
+    private List<DebtEntity> borrowers;
+    private UserWithDebts userWithDebts;
+    private DebtEntity sameDebtEntity;
+    private RecyclerView borrowersView;
     private Toolbar toolbar;
+    private LinearLayout linearLayout;
+    private ImageView imgSearch;
+    
+    //only for help with exeptions
+    private EditText a1;
+    private EditText a2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +62,8 @@ public class BorrowerActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.purple_700));
         //
-
+        linearLayout = findViewById(R.id.LayoutName2);
+        linearLayout.setVisibility(View.GONE);
 
         toolbar = findViewById(R.id.toolbar3);
         database = UserDatabase.getUserDatabase(this);
@@ -83,8 +91,8 @@ public class BorrowerActivity extends AppCompatActivity {
 
         OnClickListener btnClick = v -> {
             //check if user or amount is correct
-            EditText a1 = (EditText) findViewById(R.id.etBorrower);
-            EditText a2 = (EditText) findViewById(R.id.etAmount);
+            a1 = (EditText) findViewById(R.id.etBorrower);
+            a2 = (EditText) findViewById(R.id.etAmount);
 
             if (a1.length() == 0 || a2.length() == 0 ) {
                 Toast.makeText(getApplicationContext(), "You need to fill fields", Toast.LENGTH_SHORT).show();
@@ -127,6 +135,18 @@ public class BorrowerActivity extends AppCompatActivity {
                 Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
             }
         };
+
+        //Search is here!!!
+        imgSearch= (ImageView) findViewById(R.id.img_search);
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgSearch.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
+
+            }
+        });
+
         findViewById(R.id.btnAddBorrower).setOnClickListener(btnClick);
     }
 
