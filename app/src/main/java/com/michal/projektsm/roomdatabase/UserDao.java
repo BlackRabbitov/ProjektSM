@@ -13,10 +13,12 @@ import java.util.List;
 @Dao
 public abstract class UserDao {
 
-    public void insert(UserWithDebts userWithDebts){
+    public void insert(UserWithDebts userWithDebts, DebtEntity debtEntity){
         long id = getUserId(userWithDebts.getUser().getUserName());
         userWithDebts.getDebts().forEach(i->i.setUserCreatorId(id));
-        insertAllDebts(userWithDebts.getDebts());
+        //insertAllDebts(userWithDebts.getDebts());
+        insertDebt(debtEntity);
+
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -28,11 +30,17 @@ public abstract class UserDao {
     @Query("SELECT * FROM users WHERE userName=(:userName)")
     abstract UserEntity getUser(String userName);
 
+    @Insert
+    abstract void insertDebt(DebtEntity debtEntity);
+
     @Delete
     public abstract void deleteDebt(DebtEntity debtEntity);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     public abstract void updateAmount(DebtEntity debtEntity);
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    public abstract void updateAllDebts(List<DebtEntity> debtEntities);
 
     @Insert
     public abstract void registerUser(UserEntity userEntity);

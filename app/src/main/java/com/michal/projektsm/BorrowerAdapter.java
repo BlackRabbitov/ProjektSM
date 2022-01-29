@@ -58,7 +58,6 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        database = UserDatabase.getUserDatabase(context);
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
