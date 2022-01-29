@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProjektSM</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Nazwa Użytkownika</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="action_sign_in">Zaloguj się</string>
+    <string name="action_sign_in_short">Zaloguj się</string>
+    <string name="welcome">"Witaj !"</string>
+    <string name="invalid_username">Zła nazwa użytkownika</string>
+    <string name="invalid_password">Hasło musi mieć >5 znaków</string>
+    <string name="login_failed">"Logowanie nie powiodło się"</string>
+    <string name="action_register">Zarejestruj się</string>
+    <string name="action_login">Zaloguj się</string>
+    <string name="action_forgot_password">Zapomniałeś hasła?</string>
+    <string name="register_user">Zarejestruj użytkownika</string>
+    <string name="enter_username">Nazwa użytkownika</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_name">Imię</string>
+    <string name="enter_password">Hasło</string>
+
+    <string name="borrower">Dłużnik</string>
+    <string name="add_button">Dodaj</string>
+    <string name="amount">Ilość</string>
+    <string name="app_name_2">SplitManager</string>
+    <string name="control_your_payments">zarządzaj swoimi płatnościami</string>
+    <string name="you_owe">jesteś winien</string>
+    <string name="you_are_owed">należne ci</string>
+    <string name="no_money">0.00zł</string>
+    <string name="total_balance">całkowity balans</string>
+
+    <string name="navigation_drawer_open">Otwórz szufladę nawigacyjną</string>
+    <string name="navigation_drawer_close">Zamknij szufladę nawigacyjną</string>
+
+    <string name="channel_name">"PaymentManager dzwoni!"</string>
+    <string name="channel_description">"Zobacz te nowe przystojne powiadomienie!"</string>
+</resources>

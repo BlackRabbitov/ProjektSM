@@ -9,11 +9,5 @@ p
 @app/src/main/java/com/michal/projektsm/data/LoginDataSource.java,a\6\a6dacf58eb933171ab4f8348f9b02cd49e1539e5
 s
 Capp/src/main/java/com/michal/projektsm/data/model/LoggedInUser.java,c\d\cddeb3936e7a4db862a2d7dd90d393494c2676cf
-c
-3app/src/main/java/com/michal/projektsm/Profile.java,6\9\699e5bf219859b434ef03a469f851c6bed32eb10
-l
-<app/src/main/java/com/michal/projektsm/RegisterActivity.java,e\1\e1429362d111bfa8e3183e59e1672dac8a445856
-h
-8app/src/main/java/com/michal/projektsm/MainActivity.java,0\e\0e53dc190fee57320c3eefa504564353362c0b21
 v
 Fapp/src/main/java/com/michal/projektsm/roomdatabase/UserWithDebts.java,c\4\c4c5134f0b8d16757adabd0363cd1eabf48061f8
