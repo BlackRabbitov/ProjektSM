@@ -1,6 +1,8 @@
 package com.michal.projektsm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +46,7 @@ public class BorrowerActivity extends AppCompatActivity {
         adapter = new BorrowerAdapter(this, borrowers);
         borrowersView.setAdapter(adapter);
         borrowersView.setLayoutManager(new LinearLayoutManager(this));
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(borrowersView);
 
         OnClickListener btnClick = v -> {
             DebtEntity debt1 = new DebtEntity();
@@ -76,4 +79,19 @@ public class BorrowerActivity extends AppCompatActivity {
         };
         findViewById(R.id.btnAddBorrower).setOnClickListener(btnClick);
     }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            Log.d(TAG, viewHolder.getAdapterPosition() + " - pozycja hehe");
+            database.userDao().deleteDebt(borrowers.get(viewHolder.getAdapterPosition()));
+            borrowers.remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+        }
+    };
 }
