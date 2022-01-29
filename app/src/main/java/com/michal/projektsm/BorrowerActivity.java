@@ -2,14 +2,18 @@ package com.michal.projektsm;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,13 +33,14 @@ import java.util.List;
 
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
-    UserDatabase database;
-    BorrowerAdapter adapter;
-    List<DebtEntity> borrowers;
-    UserWithDebts userWithDebts;
-    DebtEntity sameDebtEntity = null;
+    private UserDatabase database;
+    private BorrowerAdapter adapter;
+    private List<DebtEntity> borrowers;
+    private UserWithDebts userWithDebts;
+    private DebtEntity sameDebtEntity = null;
 
-    RecyclerView borrowersView;
+    private RecyclerView borrowersView;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +48,28 @@ public class BorrowerActivity extends AppCompatActivity {
 
         //Changing Android status bar color
         Window window = this.getWindow();
-
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.purple_700));
         //
 
+
+        toolbar = findViewById(R.id.toolbar3);
         database = UserDatabase.getUserDatabase(this);
         userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
         borrowers = userWithDebts.getDebts();
+
+        //toolbar go home page
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BorrowerActivity.this, MainActivity.class));
+            }
+        });
+
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
         adapter = new BorrowerAdapter(this, borrowers);
@@ -106,5 +122,6 @@ public class BorrowerActivity extends AppCompatActivity {
             borrowers.remove(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();
         }
+
     };
 }
