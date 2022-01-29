@@ -1,0 +1,23 @@
+
+q
+java:S1450*"VRemove the "binding" field and declare it as a local variable in the relevant methods.(¸¢»Ÿùÿÿÿÿ
+h
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(ßìê¯
+V	java:S125_"<This block of commented-out lines of code should be removed.(Àµ®ãüÿÿÿÿ
+R	java:S125ˆ"<This block of commented-out lines of code should be removed.(ó•›ğ
+I
+java:S1135´"2Complete the task associated to this TODO comment.(’”´×
+C
+java:S1604>"(Make this anonymous inner class a lambda(¢ÏÇ½øÿÿÿÿ
+C
+java:S1604O"(Make this anonymous inner class a lambda(å¾°úÿÿÿÿ
+>
+java:S1604y"(Make this anonymous inner class a lambda(Æã¶á
+D
+java:S1604—"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ
+?
+java:S1604’"(Make this anonymous inner class a lambda(ÉãÃ®
+D
+java:S1604…"(Make this anonymous inner class a lambda(«–Âæşÿÿÿÿ
+D
+java:S1604©"(Make this anonymous inner class a lambda(ºÁöïûÿÿÿÿ

@@ -46,7 +46,7 @@ public class BorrowerActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private LinearLayout linearLayout;
     private ImageView imgSearch;
-    
+
     //only for help with exeptions
     private EditText a1;
     private EditText a2;
