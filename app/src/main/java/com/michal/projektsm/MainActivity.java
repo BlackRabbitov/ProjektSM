@@ -22,10 +22,21 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.michal.projektsm.roomdatabase.ActiveUser;
+import com.michal.projektsm.roomdatabase.DebtEntity;
+import com.michal.projektsm.roomdatabase.UserDatabase;
+import com.michal.projektsm.roomdatabase.UserWithDebts;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+
     private TextView tName;
+    //DB variables
+    UserDatabase database;
+    List<DebtEntity> borrowers;
+    UserWithDebts userWithDebts;
 
     //navigation view variables
     private DrawerLayout drawerLayout;
@@ -37,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
+
+        Float borrowedPlus = 0f; //amount of money people owe you
+        Float borrowedMinus = 0f; //amount of money people you owe to people
 
         //navigation
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -53,14 +67,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+
+        //DB
+        database = UserDatabase.getUserDatabase(this);
+        userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
+        borrowers = userWithDebts.getDebts();
+        for (DebtEntity debtEntity : borrowers) {
+            if(debtEntity.getAmount() > 0) {
+                borrowedPlus += debtEntity.getAmount();
+            } else {
+                borrowedMinus -= debtEntity.getAmount();
+            }
+        }
+        ((TextView) findViewById(R.id.textView4)).setText(borrowedMinus + "zł");
+        ((TextView) findViewById(R.id.textView6)).setText(borrowedPlus + "zł");
+        ((TextView) findViewById(R.id.textView8)).setText((borrowedPlus - borrowedMinus) + "zł");
+    }
+
+    @Override
+    public void onResume() {
+        Float borrowedPlus = 0f; //amount of money people owe you
+        Float borrowedMinus = 0f; //amount of money people you owe to people
+
+        database = UserDatabase.getUserDatabase(this);
+        userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
+        borrowers = userWithDebts.getDebts();
+        for (DebtEntity debtEntity : borrowers) {
+            if(debtEntity.getAmount() > 0) {
+                borrowedPlus += debtEntity.getAmount();
+            } else {
+                borrowedMinus -= debtEntity.getAmount();
+            }
+        }
+        ((TextView) findViewById(R.id.textView4)).setText(borrowedMinus + "zł");
+        ((TextView) findViewById(R.id.textView6)).setText(borrowedPlus + "zł");
+        ((TextView) findViewById(R.id.textView8)).setText((borrowedPlus - borrowedMinus) + "zł");
+        super.onResume();
     }
 
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else
-        {
+        } else {
             super.onBackPressed();
         }
     }
