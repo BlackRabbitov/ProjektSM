@@ -50,23 +50,17 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_borrower, viewGroup, false);
 
         return new ViewHolder(v);
     }
-    // END_INCLUDE(recyclerViewOnCreateViewHolder)
 
-    // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         database = UserDatabase.getUserDatabase(context);
         Log.d(TAG, "Element " + position + " set.");
 
-        // Get element from your dataset at this position and replace the contents of the view
-        // with that element
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount().floatValue()));
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
@@ -76,9 +70,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
             viewHolder.getAmountTextView().setTextColor(Color.parseColor("#2DDB3F"));
         }
     }
-    // END_INCLUDE(recyclerViewOnBindViewHolder)
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return mDataSet.size();

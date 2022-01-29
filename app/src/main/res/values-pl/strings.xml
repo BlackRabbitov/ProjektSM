@@ -20,6 +20,8 @@
     <string name="enter_name">Imię</string>
     <string name="enter_password">Hasło</string>
 
+    <string name="currency">zł</string>
+
     <string name="borrower">Dłużnik</string>
     <string name="add_button">Dodaj</string>
     <string name="amount">Ilość</string>
@@ -35,4 +37,19 @@
 
     <string name="channel_name">"PaymentManager dzwoni!"</string>
     <string name="channel_description">"Zobacz te nowe przystojne powiadomienie!"</string>
+
+    <!-- Menu -->
+    <string name="menu_home">Strona główna</string>
+    <string name="menu_notifications">Powiadomienia</string>
+    <string name="menu_calculator">Kalkulator</string>
+    <string name="menu_profile">Profil</string>
+    <string name="menu_user">Użytkownik</string>
+    <string name="menu_management">Zarządzanie</string>
+    <string name="menu_categories">Kategorie</string>
+    <string name="menu_debtors">Dłużnicy</string>
+    <string name="menu_expenses">Wydatki</string>
+    <string name="menu_currency">Waluta</string>
+    <string name="menu_name">Imię</string>
+    <string name="menu_surname">Nazwisko</string>
+
 </resources>
