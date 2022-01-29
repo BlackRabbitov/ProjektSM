@@ -2,18 +2,28 @@ package com.michal.projektsm;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.DebtEntity;
@@ -33,14 +43,37 @@ public class BorrowerActivity extends AppCompatActivity {
     DebtEntity sameDebtEntity;
     RecyclerView borrowersView;
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrowers);
 
+        //Changing Android status bar color
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.purple_700));
+        //
+
+
+        toolbar = findViewById(R.id.toolbar3);
         database = UserDatabase.getUserDatabase(this);
         userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
         borrowers = userWithDebts.getDebts();
+
+        //toolbar go home page
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        //toolbar navigate to main menu
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BorrowerActivity.this, MainActivity.class));
+            }
+        });
+
 
         borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
         adapter = new BorrowerAdapter(this, borrowers);
@@ -49,7 +82,21 @@ public class BorrowerActivity extends AppCompatActivity {
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(borrowersView);
 
         OnClickListener btnClick = v -> {
+            //check if user or amount is correct
+            EditText a1 = (EditText) findViewById(R.id.etBorrower);
+            EditText a2 = (EditText) findViewById(R.id.etAmount);
+
+            if (a1.length() == 0 || a2.length() == 0 ) {
+                Toast.makeText(getApplicationContext(), "You need to fill fields", Toast.LENGTH_SHORT).show();
+                return;
+            } else if(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()) < 0.01) {
+
+                Toast.makeText(getApplicationContext(), "Need positive numbers!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             DebtEntity debt1 = new DebtEntity();
+
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
             // Check if there is debt with the same name
@@ -60,7 +107,6 @@ public class BorrowerActivity extends AppCompatActivity {
                     sameDebtEntity = debtEntity;
                 }
             }
-
             if(sameDebtEntity != null){
                 sameDebtEntity.setAmount(sameDebtEntity.getAmount() + debt1.getAmount());
                 if(sameDebtEntity.getAmount() == 0){

@@ -55,4 +55,8 @@
     <string name="menu_name">Name</string>
     <string name="menu_surname">Surname</string>
 
+    <string name="textUser">Borrower</string>
+    <string name="textMoney">Amount</string>
+
+
 </resources>
