@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.RoomDatabase;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.service.autofill.UserData;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -71,6 +72,11 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         // with that element
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
+        if(mDataSet.get(position).getAmount() < 0){
+            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#FA2917"));
+        } else {
+            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#2DDB3F"));
+        }
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
