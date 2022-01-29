@@ -15,7 +15,7 @@ public abstract class UserDao {
 
     public void insert(UserWithDebts userWithDebts, DebtEntity debtEntity){
         long id = getUserId(userWithDebts.getUser().getUserName());
-        userWithDebts.getDebts().forEach(i->i.setUserCreatorId(id));
+        debtEntity.setUserCreatorId(id);
         //insertAllDebts(userWithDebts.getDebts());
         insertDebt(debtEntity);
 
