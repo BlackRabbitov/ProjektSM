@@ -1,8 +1,6 @@
 
 d
 4app/src/main/java/com/michal/projektsm/Expenses.java,e\5\e598ef788cca3df14c275f5f96971c071f9414cb
-u
-Eapp/src/main/java/com/michal/projektsm/ui/login/LoggedInUserView.java,f\9\f96643636cade1e87b53af8d440492267a8e72cc
 p
 @app/src/main/java/com/michal/projektsm/data/LoginRepository.java,4\1\41a017ed4f7192a6e8da97fae5efc9b6ecb6418a
 p

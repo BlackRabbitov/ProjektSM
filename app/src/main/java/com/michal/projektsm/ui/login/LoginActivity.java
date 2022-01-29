@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                 String userNameText = usernameEditText.getText().toString();
                 String passwordText = passwordEditText.getText().toString();
                 if(userNameText.isEmpty() || passwordText.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.wrong_fill_fields), Toast.LENGTH_SHORT).show();
                 } else {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     UserDao userDao = userDatabase.userDao();
@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getApplicationContext(), "Wrong username/email or password!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.wrong_auth), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             } else {
