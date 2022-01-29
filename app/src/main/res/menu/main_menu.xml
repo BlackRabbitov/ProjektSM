@@ -5,46 +5,46 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_icon"
-            android:title="Home" />
+            android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_notifications"
             android:icon="@drawable/notifications_icon"
-            android:title="Notifications" />
+            android:title="@string/menu_notifications" />
         <item
             android:id="@+id/nav_calc"
             android:icon="@drawable/calc_icon"
-            android:title="Calculator" />
+            android:title="@string/menu_calculator" />
     </group>
-        <item android:title="Profile">
+        <item android:title="@string/menu_profile">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/nav_user"
                         android:icon="@drawable/user_icon"
-                        android:title="User" />
+                        android:title="@string/menu_user" />
                 </group>
             </menu>
         </item>
 
-    <item android:title="Management">
+    <item android:title="@string/menu_management">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_cat"
                     android:icon="@drawable/category_icon"
-                    android:title="Categories" />
+                    android:title="@string/menu_categories" />
                 <item
                     android:id="@+id/nav_dept"
                     android:icon="@drawable/deptors_icon"
-                    android:title="Debtors" />
+                    android:title="@string/menu_debtors" />
                 <item
                     android:id="@+id/nav_expenses"
                     android:icon="@drawable/expenses_icon"
-                    android:title="Expenses" />
+                    android:title="@string/menu_expenses" />
                 <item
                     android:id="@+id/nav_currency"
                     android:icon="@drawable/money_icon"
-                    android:title="Currency" />
+                    android:title="@string/menu_currency" />
             </group>
         </menu>
     </item>
