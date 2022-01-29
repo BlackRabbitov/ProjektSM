@@ -2,6 +2,7 @@ package com.michal.projektsm;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
@@ -37,6 +40,16 @@ public class BorrowerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrowers);
+
+        //Changing Android status bar color
+        Window window = this.getWindow();
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.purple_700));
+        //
 
         database = UserDatabase.getUserDatabase(this);
         userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
