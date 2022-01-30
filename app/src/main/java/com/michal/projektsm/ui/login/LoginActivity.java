@@ -1,10 +1,13 @@
 package  com.michal.projektsm.ui.login;
 
 import android.app.Activity;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -70,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
             }
+
         });
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
