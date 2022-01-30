@@ -61,4 +61,11 @@
     <string name="textExpenses">Wydatki</string>
     <string name="textMoney">Złoto</string>
 
+    <string name="changeUsername">Zmień nazwę użytkownika</string>
+    <string name="logout">Wyloguj</string>
+
+    <string name="nickname">Nowa nazwa</string>
+
+    <string name="accept_button">Zaakceptuj</string>
+
 </resources>

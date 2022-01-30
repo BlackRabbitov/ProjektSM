@@ -52,10 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private CardView cardViewOwe;
     private CardView cardViewOwed;
-    private CardView cardViewTotal;
 
-    private AnimationDrawable animationDrawable;
-    private LinearLayout linearLayout;
 
 
     @Override
@@ -81,13 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //toolbar
         setSupportActionBar(toolbar);
 
-        //toolbar animation
-        //linearLayout = (LinearLayout) findViewById(R.id.linearLayout3);
-
-        animationDrawable = (AnimationDrawable) toolbar.getBackground();
-        animationDrawable.setEnterFadeDuration(2500);
-        animationDrawable.setExitFadeDuration(5000);
-        animationDrawable.start();
 
         //navigation menu
         navigationView.bringToFront();
@@ -199,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_user:
-                intent = new Intent(MainActivity.this, Profile.class);
+                intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 break;
 

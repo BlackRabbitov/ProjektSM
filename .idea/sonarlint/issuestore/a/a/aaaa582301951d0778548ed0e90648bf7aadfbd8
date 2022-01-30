@@ -1,0 +1,16 @@
+
+y
+java:S1450'"\Remove the "borrowersView" field and declare it as a local variable in the relevant methods.(½şï8ÄøÄÔê/
+s
+java:S1450("VRemove the "toolbar" field and declare it as a local variable in the relevant methods.(ş®º—8ÅøÄÔê/
+~
+java:S1450%"\Remove the "userWithDebts" field and declare it as a local variable in the relevant methods.(Üöãşÿÿÿÿ8ÆøÄÔê/
+t
+java:S37761"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¨Œşÿÿÿÿ8ùÄÔê/
+a
+java:S18747"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ8”ùÄÔê/
+^	java:S125€"<This block of commented-out lines of code should be removed.(€Ø¤ğıÿÿÿÿ8«ùÄÔê/
+E
+java:S1604H"(Make this anonymous inner class a lambda(°§ÎØ8´ùÄÔê/
+K
+java:S1604‹"(Make this anonymous inner class a lambda(˜’Õÿÿÿÿÿ8´ùÄÔê/

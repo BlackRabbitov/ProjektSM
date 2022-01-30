@@ -60,5 +60,12 @@
     <string name="textExpenses">Expenses</string>
     <string name="textMoney">Amount</string>
 
+    <string name="changeUsername">Change your Username</string>
+    <string name="logout">Logout</string>
+
+    <string name="nickname">New Username</string>
+
+    <string name="accept_button">Accept</string>
+
 
 </resources>

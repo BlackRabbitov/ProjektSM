@@ -12,5 +12,8 @@
     <color name="trans">#00000000</color>
     <color name="greenItem">#0A5FFF00</color>
     <color name="line_color">#9C27B0</color>
+    <color name="nice_blue">#2196F3</color>
+
+    <color name="nice_button">#932301</color>
 
 </resources>

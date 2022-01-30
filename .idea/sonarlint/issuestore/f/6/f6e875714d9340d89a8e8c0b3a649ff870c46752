@@ -1,0 +1,17 @@
+
+{
+java:S1450"`Remove the "animationDrawable" field and declare it as a local variable in the relevant methods.(ÀÁÒØÿÿÿÿÿ
+}
+java:S1450"[Remove the "changeButton" field and declare it as a local variable in the relevant methods.(ôæàÿûÿÿÿÿ8óšØê/
+u
+java:S1450"_Remove the "constraintlayout" field and declare it as a local variable in the relevant methods.(×€»Ù
+l
+java:S1450"VRemove the "toolbar" field and declare it as a local variable in the relevant methods.(ş®º—
+a
+java:S1874A"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ8ËÍ©Øê/
+H
+java:S1068"-Remove this unused "logButton" private field.(¿§‚´úÿÿÿÿ
+>
+java:S16040"(Make this anonymous inner class a lambda(°§ÎØ
+J
+java:S1604H"(Make this anonymous inner class a lambda(¤æ±€úÿÿÿÿ8şšØê/

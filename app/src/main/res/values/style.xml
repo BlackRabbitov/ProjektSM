@@ -16,4 +16,10 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+
+    <style name="Button.Nice" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/nice_button</item>
+    </style>
+
+
 </resources>
