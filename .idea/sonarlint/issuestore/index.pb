@@ -1,4 +1,5 @@
 
+
 k
 ;app/src/main/java/com/michal/projektsm/BorrowerAdapter.java,b\7\b73ebeadfa9529304e2054c1303c8ba48512d8c2
 l

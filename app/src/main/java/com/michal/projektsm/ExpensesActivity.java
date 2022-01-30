@@ -40,6 +40,7 @@ public class ExpensesActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private LinearLayout linearLayout;
     private ImageView imgSearch;
+    private ImageView searchButton;
 
     //only for help with exeptions
     private EditText a1;
@@ -69,16 +70,11 @@ public class ExpensesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //toolbar navigate to main menu
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ExpensesActivity.this, MainActivity.class));
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
 
 
         expensesView = (RecyclerView) findViewById(R.id.rvExpenses);
-        adapter = new ExpensesAdapter(this, expenses);
+        adapter = new ExpensesAdapter(expenses);
         expensesView.setAdapter(adapter);
         expensesView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(expensesView);
@@ -87,6 +83,10 @@ public class ExpensesActivity extends AppCompatActivity {
             //check if user or amount is correct
             a1 = (EditText) findViewById(R.id.etExpense);
             a2 = (EditText) findViewById(R.id.etAmount);
+
+            expenses = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() < 0.0f).collect(Collectors.toList());
+            adapter.setmDataSet(expenses);
+            adapter.notifyDataSetChanged();
 
             if (a1.length() == 0 || a2.length() == 0 ) {
                 Toast.makeText(getApplicationContext(), "You need to fill fields", Toast.LENGTH_SHORT).show();
@@ -136,13 +136,21 @@ public class ExpensesActivity extends AppCompatActivity {
 
         //Search is here!!!
         imgSearch= (ImageView) findViewById(R.id.img_search);
-        imgSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgSearch.setVisibility(View.INVISIBLE);
-                linearLayout.setVisibility(View.VISIBLE);
+        imgSearch.setOnClickListener(v -> {
+            imgSearch.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.VISIBLE);
 
-            }
+        });
+
+        searchButton = (ImageView) findViewById(R.id.img_search2);
+        searchButton.setOnClickListener(v -> {
+            imgSearch.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.INVISIBLE);
+            expenses = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() < 0.0f).collect(Collectors.toList());
+            String searchField = ((TextView)findViewById(R.id.etSearch)).getText().toString();
+            expenses.removeIf(debtEntity -> !debtEntity.getBorrower().matches(".*" + searchField + ".*"));
+            adapter.setmDataSet(expenses);
+            adapter.notifyDataSetChanged();
         });
 
         findViewById(R.id.btnAddExpense).setOnClickListener(btnClick);

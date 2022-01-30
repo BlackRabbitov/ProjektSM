@@ -22,8 +22,6 @@ import java.util.List;
 public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHolder> {
     public static final String TAG = "BorrowerAdapter";
     private List<DebtEntity> mDataSet;
-    private Activity context;
-    private UserDatabase database;
 
     public List<DebtEntity> getmDataSet() {
         return mDataSet;
@@ -50,8 +48,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         public TextView getAmountTextView() { return amountTextView; }
     }
 
-    public BorrowerAdapter(Activity context, List<DebtEntity> dataSet) {
-        this.context = context;
+    public BorrowerAdapter(List<DebtEntity> dataSet) {
         this.mDataSet = dataSet;
     }
 
