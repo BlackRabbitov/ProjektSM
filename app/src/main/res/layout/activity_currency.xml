@@ -106,7 +106,7 @@
             android:layout_width="237dp"
             android:layout_height="234dp"
             android:layout_marginStart="94dp"
-            android:layout_marginTop="388dp"
+            android:layout_marginTop="76dp"
             android:layout_marginEnd="94dp"
             android:layout_marginBottom="44dp"
             android:src="@mipmap/by_freepik_foreground"
@@ -114,8 +114,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.055" />
+            app:layout_constraintTop_toBottomOf="@+id/btnPL" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
