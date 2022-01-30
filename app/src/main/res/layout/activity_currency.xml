@@ -103,8 +103,10 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="237dp"
-            android:layout_height="234dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            android:minWidth="200dp"
             android:layout_marginStart="94dp"
             android:layout_marginTop="76dp"
             android:layout_marginEnd="94dp"
