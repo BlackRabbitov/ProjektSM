@@ -1,14 +1,40 @@
 package com.michal.projektsm;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
 
-import android.os.Bundle;
+public class Currency {
 
-public class Currency extends AppCompatActivity {
+    private String table;
+    private String currency;
+    private String code;
+    ArrayList<Rates> rates = new ArrayList <Rates>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currency);
+
+    // Getter Methods
+
+    public String getTable() {
+        return table;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    // Setter Methods
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
