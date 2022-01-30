@@ -20,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText userId, password, name, email;
     Button register;
     Button login;
+    UserDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         register = findViewById(R.id.register);
         login = findViewById(R.id.login);
         email = findViewById(R.id.email);
+        database = UserDatabase.getUserDatabase(this);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,34 +44,39 @@ public class RegisterActivity extends AppCompatActivity {
                 userEntity.setName(name.getText().toString());
                 userEntity.setEmail(email.getText().toString());
 
-                if(validateInput(userEntity)){
-                    if(validateEmail(userEntity.getEmail())) {
-                        // Insert user into database
-                        UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                        final UserDao userDao = userDatabase.userDao();
-                        new Thread(new Runnable() {
+                if(Boolean.FALSE.equals(validateInput(userEntity))) {
+                    Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(Boolean.FALSE.equals(validateEmail(userEntity.getEmail()))){
+                    Toast.makeText(getApplicationContext(), "Incorrect email!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(Boolean.FALSE.equals(validateUsernameAvailability(userEntity))) {
+                    Toast.makeText(getApplicationContext(), "Username is taken", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Register user
+                        database.userDao().registerUser(userEntity);
+                        runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // Register user
-                                userDao.registerUser(userEntity);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getApplicationContext(), "Registration completed!", Toast.LENGTH_SHORT).show();
-                                        userId.setText(null);
-                                        password.setText(null);
-                                        name.setText(null);
-                                        email.setText(null);
-                                    }
-                                });
+                                Toast.makeText(getApplicationContext(), "Registration completed!", Toast.LENGTH_SHORT).show();
+                                userId.setText(null);
+                                password.setText(null);
+                                name.setText(null);
+                                email.setText(null);
                             }
-                        }).start();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Incorrect email!", Toast.LENGTH_SHORT).show();
+                        });
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
-                }
+                }).start();
+                finish();
             }
         });
 
@@ -85,6 +92,13 @@ public class RegisterActivity extends AppCompatActivity {
     // Validate if data is empty
     private Boolean validateInput(UserEntity userEntity){
         if(userEntity.getName().isEmpty() || userEntity.getPassword().isEmpty() || userEntity.getName().isEmpty() || userEntity.getEmail().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    private Boolean validateUsernameAvailability(UserEntity userEntity){
+        if(database.userDao().getUser(userEntity.getUserName()) != null){
             return false;
         }
         return true;

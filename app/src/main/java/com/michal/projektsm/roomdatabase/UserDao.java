@@ -28,7 +28,7 @@ public abstract class UserDao {
     abstract long getUserId(String userName);
 
     @Query("SELECT * FROM users WHERE userName=(:userName)")
-    abstract UserEntity getUser(String userName);
+    public abstract UserEntity getUser(String userName);
 
     @Insert
     public abstract void insertDebt(DebtEntity debtEntity);

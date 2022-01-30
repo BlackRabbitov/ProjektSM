@@ -25,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.DebtEntity;
 import com.michal.projektsm.roomdatabase.UserDatabase;
+import com.michal.projektsm.roomdatabase.UserEntity;
 import com.michal.projektsm.roomdatabase.UserWithDebts;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private UserDatabase database;
     private List<DebtEntity> borrowers;
     private UserWithDebts userWithDebts;
+    private UserEntity loggedInUser;
 
     //navigation view variables
     private DrawerLayout drawerLayout;
@@ -54,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
+        loggedInUser = ActiveUser.getInstance().getUser();
 
         Float borrowedPlus = 0f; //amount of money people owe you
         Float borrowedMinus = 0f; //amount of money people you owe to people
-
 
         //navigation
         drawerLayout = findViewById(R.id.drawer_layout);
