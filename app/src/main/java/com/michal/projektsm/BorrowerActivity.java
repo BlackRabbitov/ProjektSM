@@ -100,7 +100,7 @@ public class BorrowerActivity extends AppCompatActivity {
             DebtEntity debt1 = new DebtEntity();
 
             debt1.setBorrower(((TextView) findViewById(R.id.etExpense)).getText().toString());
-            debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
+            debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()) * CurrencyConverter.getInstance().getMultiplier());
             debt1.setUserCreatorId(ActiveUser.getInstance().getUser().getId());
             // Check if there is debt with the same name
             sameDebtEntity = null;
