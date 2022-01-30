@@ -40,6 +40,7 @@ public class BorrowerActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private LinearLayout linearLayout;
     private ImageView imgSearch;
+    private ImageView searchButton;
 
     //only for help with exeptions
     private EditText a1;
@@ -88,6 +89,10 @@ public class BorrowerActivity extends AppCompatActivity {
             a1 = (EditText) findViewById(R.id.etExpense);
             a2 = (EditText) findViewById(R.id.etAmount);
 
+            borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
+            adapter.setmDataSet(borrowers);
+            adapter.notifyDataSetChanged();
+
             if (a1.length() == 0 || a2.length() == 0 ) {
                 Toast.makeText(getApplicationContext(), "You need to fill fields", Toast.LENGTH_SHORT).show();
                 return;
@@ -135,13 +140,26 @@ public class BorrowerActivity extends AppCompatActivity {
         };
 
         //Search is here!!!
-        imgSearch= (ImageView) findViewById(R.id.img_search);
+        imgSearch = (ImageView) findViewById(R.id.img_search);
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imgSearch.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
+            }
+        });
 
+        searchButton = (ImageView) findViewById(R.id.img_search2);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgSearch.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
+                borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
+                String searchField = ((TextView)findViewById(R.id.etSearch)).getText().toString();
+                borrowers.removeIf(debtEntity -> !debtEntity.getBorrower().matches(".*" + searchField + ".*"));
+                adapter.setmDataSet(borrowers);
+                adapter.notifyDataSetChanged();
             }
         });
 
