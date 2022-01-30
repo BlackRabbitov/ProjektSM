@@ -103,7 +103,7 @@
             android:text="@string/accept_button"
             android:textColor="@color/white" />
         <EditText
-            android:id="@+id/etExpense"
+            android:id="@+id/newUsername"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
