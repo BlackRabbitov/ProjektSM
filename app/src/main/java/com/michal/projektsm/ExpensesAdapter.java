@@ -66,8 +66,8 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
-        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount().floatValue()));
-        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount() * -1.0f));
+        viewHolder.getAmountTextView().setText(CurrencyConverter.getInstance().getCurrency(mDataSet.get(position).getAmount().floatValue()));
+        viewHolder.getAmountTextView().setText(CurrencyConverter.getInstance().getCurrency(mDataSet.get(position).getAmount() * -1.0f));
     }
 
     @Override
