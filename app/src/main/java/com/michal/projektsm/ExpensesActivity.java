@@ -166,7 +166,7 @@ public class ExpensesActivity extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             database.userDao().deleteDebt(expenses.get(viewHolder.getAdapterPosition()));
             expenses.remove(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
     };
 }

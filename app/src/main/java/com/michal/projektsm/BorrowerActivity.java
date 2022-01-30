@@ -165,7 +165,7 @@ public class BorrowerActivity extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             database.userDao().deleteDebt(borrowers.get(viewHolder.getAdapterPosition()));
             borrowers.remove(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
     };
 }
