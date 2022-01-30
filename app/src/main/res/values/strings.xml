@@ -71,4 +71,9 @@
 
 
     <string name="api_error">Could not download API</string>
+
+    <string name="pln_change">Your currency is set tu PLN</string>
+    <string name="usd_change">Your currency is set tu USD</string>
+    <string name="gbp_change">Your currency is set tu GBP</string>
+    <string name="eur_change">Your currency is set tu EUR</string>
 </resources>
