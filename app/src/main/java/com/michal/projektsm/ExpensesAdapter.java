@@ -22,8 +22,6 @@ import java.util.List;
 public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHolder> {
     public static final String TAG = "ExpensesAdapter";
     private List<DebtEntity> mDataSet;
-    private Activity context;
-    private UserDatabase database;
 
     public List<DebtEntity> getmDataSet() {
         return mDataSet;
@@ -50,8 +48,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
         public TextView getAmountTextView() { return amountTextView; }
     }
 
-    public ExpensesAdapter(Activity context, List<DebtEntity> dataSet) {
-        this.context = context;
+    public ExpensesAdapter(List<DebtEntity> dataSet) {
         this.mDataSet = dataSet;
     }
 

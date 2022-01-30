@@ -70,16 +70,11 @@ public class BorrowerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //toolbar navigate to main menu
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
 
 
         borrowersView = (RecyclerView) findViewById(R.id.rvExpenses);
-        adapter = new BorrowerAdapter(this, borrowers);
+        adapter = new BorrowerAdapter(borrowers);
         borrowersView.setAdapter(adapter);
         borrowersView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(borrowersView);
@@ -141,26 +136,20 @@ public class BorrowerActivity extends AppCompatActivity {
 
         //Search is here!!!
         imgSearch = (ImageView) findViewById(R.id.img_search);
-        imgSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgSearch.setVisibility(View.INVISIBLE);
-                linearLayout.setVisibility(View.VISIBLE);
-            }
+        imgSearch.setOnClickListener(v -> {
+            imgSearch.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.VISIBLE);
         });
 
         searchButton = (ImageView) findViewById(R.id.img_search2);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgSearch.setVisibility(View.VISIBLE);
-                linearLayout.setVisibility(View.INVISIBLE);
-                borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
-                String searchField = ((TextView)findViewById(R.id.etSearch)).getText().toString();
-                borrowers.removeIf(debtEntity -> !debtEntity.getBorrower().matches(".*" + searchField + ".*"));
-                adapter.setmDataSet(borrowers);
-                adapter.notifyDataSetChanged();
-            }
+        searchButton.setOnClickListener(v -> {
+            imgSearch.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.INVISIBLE);
+            borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
+            String searchField = ((TextView)findViewById(R.id.etSearch)).getText().toString();
+            borrowers.removeIf(debtEntity -> !debtEntity.getBorrower().matches(".*" + searchField + ".*"));
+            adapter.setmDataSet(borrowers);
+            adapter.notifyDataSetChanged();
         });
 
         findViewById(R.id.btnAddExpense).setOnClickListener(btnClick);
