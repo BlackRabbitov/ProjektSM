@@ -68,4 +68,6 @@
 
     <string name="accept_button">Zaakceptuj</string>
 
+    <string name="changeCurrency">przewalutuj na swoją walutę</string>
+
 </resources>
