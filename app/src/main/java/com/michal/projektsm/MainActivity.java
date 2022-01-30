@@ -4,10 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.View;
 import android.widget.Button;
 
 import android.app.NotificationChannel;
@@ -19,6 +25,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -34,14 +41,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private TextView tName;
     //DB variables
-    UserDatabase database;
-    List<DebtEntity> borrowers;
-    UserWithDebts userWithDebts;
+    private UserDatabase database;
+    private List<DebtEntity> borrowers;
+    private UserWithDebts userWithDebts;
 
     //navigation view variables
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
+
+    private CardView cardViewOwe;
+    private CardView cardViewOwed;
+    private CardView cardViewTotal;
+
+    private AnimationDrawable animationDrawable;
+    private LinearLayout linearLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +64,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
+
         Float borrowedPlus = 0f; //amount of money people owe you
         Float borrowedMinus = 0f; //amount of money people you owe to people
+
 
         //navigation
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar3);
 
+        //card buttons
+        cardViewOwe = (CardView) findViewById(R.id.cardViewOwe);
+        cardViewOwed = (CardView) findViewById(R.id.cardViewOwed);
+
         //toolbar
         setSupportActionBar(toolbar);
+
+        //toolbar animation
+        //linearLayout = (LinearLayout) findViewById(R.id.linearLayout3);
+
+        animationDrawable = (AnimationDrawable) toolbar.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         //navigation menu
         navigationView.bringToFront();
@@ -79,9 +108,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 borrowedMinus -= debtEntity.getAmount();
             }
         }
+
         ((TextView) findViewById(R.id.textView4)).setText(borrowedMinus + "zł");
         ((TextView) findViewById(R.id.textView6)).setText(borrowedPlus + "zł");
         ((TextView) findViewById(R.id.textView8)).setText((borrowedPlus - borrowedMinus) + "zł");
+
+        cardViewOwe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ExpensesActivity.class));
+            }
+        });
+
+        cardViewOwed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BorrowerActivity.class));
+            }
+        });
+
     }
 
     @Override
@@ -137,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_expenses:
-                intent = new Intent(MainActivity.this, Expenses.class);
+                intent = new Intent(MainActivity.this, ExpensesActivity.class);
                 startActivity(intent);
                 break;
 

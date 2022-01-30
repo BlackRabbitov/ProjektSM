@@ -19,8 +19,8 @@ import com.michal.projektsm.roomdatabase.UserDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHolder> {
-    public static final String TAG = "BorrowerAdapter";
+public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHolder> {
+    public static final String TAG = "ExpensesAdapter";
     private List<DebtEntity> mDataSet;
     private Activity context;
     private UserDatabase database;
@@ -50,7 +50,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         public TextView getAmountTextView() { return amountTextView; }
     }
 
-    public BorrowerAdapter(Activity context, List<DebtEntity> dataSet) {
+    public ExpensesAdapter(Activity context, List<DebtEntity> dataSet) {
         this.context = context;
         this.mDataSet = dataSet;
     }
@@ -59,7 +59,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_borrower, viewGroup, false);
+                .inflate(R.layout.item_expense, viewGroup, false);
 
         return new ViewHolder(v);
     }
@@ -70,12 +70,7 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
 
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount().floatValue()));
-        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
-        if(mDataSet.get(position).getAmount() < 0){
-            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#FA2917"));
-        } else {
-            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#2DDB3F"));
-        }
+        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount() * -1.0f));
     }
 
     @Override

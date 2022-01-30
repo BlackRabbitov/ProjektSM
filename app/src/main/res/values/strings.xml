@@ -22,6 +22,7 @@
     <string name="currency">zł</string>
 
     <string name="borrower">Borrower</string>
+    <string name="expense">Expense</string>
     <string name="add_button">Add</string>
     <string name="amount">Amount</string>
     <string name="app_name_2">SplitManager</string>
@@ -55,7 +56,8 @@
     <string name="menu_name">Name</string>
     <string name="menu_surname">Surname</string>
 
-    <string name="textUser">Borrower</string>
+    <string name="textBorrower">Borrower</string>
+    <string name="textExpenses">Expenses</string>
     <string name="textMoney">Amount</string>
 
 

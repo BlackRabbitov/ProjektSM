@@ -1,21 +1,21 @@
 
-b
-java:S1659"EDeclare "password" and all following declarations on a separate line.(­ş…²8˜ıéê/
-^
-java:S1126W"AReplace this if-then-else statement by a single return statement.(³á‡Ş8¤¤¹ê/
-h
-java:S1764W"KCorrect one of the identical sub-expressions on both sides of operator "||"(³á‡Ş8¥¤¹ê/
-]
-java:S1126^"AReplace this if-then-else statement by a single return statement.(ªÍC8¨¤¹ê/
+[
+java:S1659"EDeclare "password" and all following declarations on a separate line.(­ş…²
+W
+java:S1126W"AReplace this if-then-else statement by a single return statement.(³á‡Ş
+a
+java:S1764W"KCorrect one of the identical sub-expressions on both sides of operator "||"(³á‡Ş
+V
+java:S1126^"AReplace this if-then-else statement by a single return statement.(ªÍC
 C
 java:S16047"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ
 >
 java:S16042"(Make this anonymous inner class a lambda(ÉãÃ®
-E
-java:S1604#"(Make this anonymous inner class a lambda(á‡¤Å8®¤¹ê/
-J
-java:S1604L"(Make this anonymous inner class a lambda(ç¯€ùÿÿÿÿ8ú²Ö°ê/
-G
-java:S5411-"*Use the primitive boolean expression here.(ç²ÒÉ8°¤¹ê/
-G
-java:S5411."*Use the primitive boolean expression here.(¿¶èñ8°¤¹ê/
+>
+java:S1604#"(Make this anonymous inner class a lambda(á‡¤Å
+C
+java:S1604L"(Make this anonymous inner class a lambda(ç¯€ùÿÿÿÿ
+@
+java:S5411-"*Use the primitive boolean expression here.(ç²ÒÉ
+@
+java:S5411."*Use the primitive boolean expression here.(¿¶èñ

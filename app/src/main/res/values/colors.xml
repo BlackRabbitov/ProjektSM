@@ -11,6 +11,7 @@
 
     <color name="trans">#00000000</color>
     <color name="greenItem">#0A5FFF00</color>
+    <color name="redItem">#0AFF0000</color>
     <color name="line_color">#9C27B0</color>
 
 </resources>
