@@ -66,7 +66,6 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
-        viewHolder.getAmountTextView().setText(CurrencyConverter.getInstance().getCurrency(mDataSet.get(position).getAmount().floatValue()));
         viewHolder.getAmountTextView().setText(CurrencyConverter.getInstance().getCurrency(mDataSet.get(position).getAmount()));
         if(mDataSet.get(position).getAmount() < 0){
             viewHolder.getAmountTextView().setTextColor(Color.parseColor("#FA2917"));
