@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.UserDatabase;
 import com.michal.projektsm.roomdatabase.UserEntity;
+import com.michal.projektsm.ui.login.LoginActivity;
 
 import java.util.stream.Collectors;
 
@@ -28,13 +30,23 @@ public class ProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ConstraintLayout constraintlayout;
     private AnimationDrawable animationDrawable;
+
+    //Buttons
     private Button logButton;
     private Button changeButton;
     private Button acceptChangeButton;
+    private Button Logout1;
+    private Button Logout2;
+
+    //Layouts
     private LinearLayout linearLayoutChange;
     private LinearLayout linearLayoutAccept;
+
+    //TextViews
     private TextView userName;
     private TextView newUserName;
+
+    //DB
     private UserDatabase database;
     private UserEntity loggedInUser;
 
@@ -85,6 +97,8 @@ public class ProfileActivity extends AppCompatActivity {
         //Change your username!!!
         changeButton = findViewById(R.id.changeUsername);
         acceptChangeButton = findViewById(R.id.accept_button);
+        Logout1 = findViewById(R.id.Logout);
+        Logout2 = findViewById(R.id.Logout2);
         acceptChangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +123,26 @@ public class ProfileActivity extends AppCompatActivity {
 
                 newUserName.setText("");
                 userName.setText(loggedInUser.getUserName());
+            }
+        });
+
+        Logout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActiveUser.getInstance().setUser(null);
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+             }
+        });
+
+        Logout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActiveUser.getInstance().setUser(null);
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 
