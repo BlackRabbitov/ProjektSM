@@ -35,6 +35,7 @@ public class CurrencyConverter {
     public Float getMultiplier() {
         return this.multiplier;
     }
+
     public String getCurrency(Float value)
     {
         switch(currencyName)

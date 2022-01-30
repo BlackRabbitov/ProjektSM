@@ -94,9 +94,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        ((TextView) findViewById(R.id.textView4)).setText(borrowedMinus + "zł");
-        ((TextView) findViewById(R.id.textView6)).setText(borrowedPlus + "zł");
-        ((TextView) findViewById(R.id.textView8)).setText(String.format("%.2f", (borrowedPlus - borrowedMinus)) + "zł");
+        ((TextView) findViewById(R.id.textView4)).setText(CurrencyConverter.getInstance().getCurrency(borrowedMinus));
+        ((TextView) findViewById(R.id.textView6)).setText(CurrencyConverter.getInstance().getCurrency(borrowedPlus));
+        ((TextView) findViewById(R.id.textView8)).setText(CurrencyConverter.getInstance().getCurrency(borrowedPlus - borrowedMinus));
 
         cardViewOwe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,9 +129,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 borrowedMinus -= debtEntity.getAmount();
             }
         }
-        ((TextView) findViewById(R.id.textView4)).setText(borrowedMinus + "zł");
-        ((TextView) findViewById(R.id.textView6)).setText(borrowedPlus + "zł");
-        ((TextView) findViewById(R.id.textView8)).setText(String.format("%.2f", (borrowedPlus - borrowedMinus)) + "zł");
+
+        ((TextView) findViewById(R.id.textView4)).setText(CurrencyConverter.getInstance().getCurrency(borrowedMinus));
+        ((TextView) findViewById(R.id.textView6)).setText(CurrencyConverter.getInstance().getCurrency(borrowedPlus));
+        ((TextView) findViewById(R.id.textView8)).setText(CurrencyConverter.getInstance().getCurrency(borrowedPlus - borrowedMinus));
         super.onResume();
     }
 
