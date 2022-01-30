@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         cardViewOwe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Expenses.class));
+                startActivity(new Intent(MainActivity.this, ExpensesActivity.class));
             }
         });
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_expenses:
-                intent = new Intent(MainActivity.this, Expenses.class);
+                intent = new Intent(MainActivity.this, ExpensesActivity.class);
                 startActivity(intent);
                 break;
 

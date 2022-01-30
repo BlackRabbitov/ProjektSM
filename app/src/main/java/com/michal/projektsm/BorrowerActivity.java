@@ -8,32 +8,26 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.michal.projektsm.roomdatabase.ActiveUser;
 import com.michal.projektsm.roomdatabase.DebtEntity;
-import com.michal.projektsm.roomdatabase.UserDao;
 import com.michal.projektsm.roomdatabase.UserDatabase;
 import com.michal.projektsm.roomdatabase.UserWithDebts;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BorrowerActivity extends AppCompatActivity {
     public static final String TAG = "BorrowerActivity";
@@ -68,7 +62,7 @@ public class BorrowerActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar3);
         database = UserDatabase.getUserDatabase(this);
         userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
-        borrowers = userWithDebts.getDebts();
+        borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
 
         //toolbar go home page
         setSupportActionBar(toolbar);
@@ -83,7 +77,7 @@ public class BorrowerActivity extends AppCompatActivity {
         });
 
 
-        borrowersView = (RecyclerView) findViewById(R.id.rvBorrowers);
+        borrowersView = (RecyclerView) findViewById(R.id.rvExpenses);
         adapter = new BorrowerAdapter(this, borrowers);
         borrowersView.setAdapter(adapter);
         borrowersView.setLayoutManager(new LinearLayoutManager(this));
@@ -91,7 +85,7 @@ public class BorrowerActivity extends AppCompatActivity {
 
         OnClickListener btnClick = v -> {
             //check if user or amount is correct
-            a1 = (EditText) findViewById(R.id.etBorrower);
+            a1 = (EditText) findViewById(R.id.etExpense);
             a2 = (EditText) findViewById(R.id.etAmount);
 
             if (a1.length() == 0 || a2.length() == 0 ) {
@@ -105,8 +99,9 @@ public class BorrowerActivity extends AppCompatActivity {
 
             DebtEntity debt1 = new DebtEntity();
 
-            debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
+            debt1.setBorrower(((TextView) findViewById(R.id.etExpense)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
+            debt1.setUserCreatorId(ActiveUser.getInstance().getUser().getId());
             // Check if there is debt with the same name
             sameDebtEntity = null;
             for (DebtEntity debtEntity : borrowers){
@@ -123,15 +118,18 @@ public class BorrowerActivity extends AppCompatActivity {
                     adapter.notifyItemRemoved(borrowers.indexOf(sameDebtEntity));
                     Log.d(TAG, "Debt from borrower: " + debt1.getBorrower() + " paid. Deleting debt");
                 } else {
-                    borrowers.get(borrowers.indexOf(sameDebtEntity)).setAmount(sameDebtEntity.getAmount());
                     database.userDao().updateAmount(sameDebtEntity);
                     adapter.notifyItemChanged(borrowers.indexOf(sameDebtEntity));
                     Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
                 }
             } else {
                 borrowers.add(debt1);
-                database.userDao().insert(userWithDebts, debt1);
-                adapter.notifyItemInserted(borrowers.size() - 1);
+                database.userDao().insertDebt(debt1);
+                //database.userDao().insert(userWithDebts, debt1);
+                adapter.notifyItemInserted(borrowers.size());
+                userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
+                borrowers = userWithDebts.getDebts().stream().filter(item -> item.getAmount().floatValue() > 0.0f).collect(Collectors.toList());
+                adapter.setmDataSet(borrowers);
                 Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
             }
         };
@@ -147,7 +145,7 @@ public class BorrowerActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnAddBorrower).setOnClickListener(btnClick);
+        findViewById(R.id.btnAddExpense).setOnClickListener(btnClick);
     }
 
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {

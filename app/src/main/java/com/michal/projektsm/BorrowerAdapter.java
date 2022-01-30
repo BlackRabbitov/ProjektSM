@@ -25,6 +25,14 @@ public class BorrowerAdapter extends RecyclerView.Adapter<BorrowerAdapter.ViewHo
     private Activity context;
     private UserDatabase database;
 
+    public List<DebtEntity> getmDataSet() {
+        return mDataSet;
+    }
+
+    public void setmDataSet(List<DebtEntity> mDataSet) {
+        this.mDataSet = mDataSet;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView nameTextView;
         private final TextView amountTextView;

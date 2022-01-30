@@ -28,7 +28,7 @@
             android:id="@+id/textUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/textUser"
+            android:text="@string/textBorrower"
             android:textColor="@color/white" />
 
         <TextView
@@ -42,7 +42,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBorrowers"
+        android:id="@+id/rvExpenses"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/img_search"
@@ -52,7 +52,7 @@
         android:paddingRight="16dp"/>
 
     <EditText
-        android:id="@+id/etBorrower"
+        android:id="@+id/etExpense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/borrower"
@@ -71,10 +71,10 @@
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddBorrower" />
+        app:layout_constraintEnd_toStartOf="@+id/btnAddExpense" />
 
     <Button
-        android:id="@+id/btnAddBorrower"
+        android:id="@+id/btnAddExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_button"
@@ -88,10 +88,10 @@
         android:layout_height="40dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/etBorrower"
+        app:layout_constraintBottom_toTopOf="@+id/etExpense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvBorrowers"
+        app:layout_constraintTop_toBottomOf="@+id/rvExpenses"
         app:srcCompat="@drawable/search_icon" />
 
     <LinearLayout
@@ -99,10 +99,10 @@
         android:layout_width="184dp"
         android:layout_height="42dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/etBorrower"
+        app:layout_constraintBottom_toTopOf="@+id/etExpense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvBorrowers"
+        app:layout_constraintTop_toBottomOf="@+id/rvExpenses"
         android:orientation="horizontal">
 
         <EditText
