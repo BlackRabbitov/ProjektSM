@@ -72,7 +72,7 @@ public class ExpensesActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ExpensesActivity.this, MainActivity.class));
+                finish();
             }
         });
 
