@@ -31,7 +31,7 @@ public abstract class UserDao {
     abstract UserEntity getUser(String userName);
 
     @Insert
-    abstract void insertDebt(DebtEntity debtEntity);
+    public abstract void insertDebt(DebtEntity debtEntity);
 
     @Delete
     public abstract void deleteDebt(DebtEntity debtEntity);

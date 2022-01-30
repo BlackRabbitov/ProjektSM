@@ -9,3 +9,5 @@ p
 @app/src/main/java/com/michal/projektsm/data/LoginDataSource.java,a\6\a6dacf58eb933171ab4f8348f9b02cd49e1539e5
 s
 Capp/src/main/java/com/michal/projektsm/data/model/LoggedInUser.java,c\d\cddeb3936e7a4db862a2d7dd90d393494c2676cf
+s
+Capp/src/main/java/com/michal/projektsm/roomdatabase/DebtEntity.java,0\a\0adfd0c37240173c09ed453c38789f8cd6683865

@@ -107,6 +107,7 @@ public class BorrowerActivity extends AppCompatActivity {
 
             debt1.setBorrower(((TextView) findViewById(R.id.etBorrower)).getText().toString());
             debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()));
+            debt1.setUserCreatorId(ActiveUser.getInstance().getUser().getId());
             // Check if there is debt with the same name
             sameDebtEntity = null;
             for (DebtEntity debtEntity : borrowers){
@@ -123,15 +124,18 @@ public class BorrowerActivity extends AppCompatActivity {
                     adapter.notifyItemRemoved(borrowers.indexOf(sameDebtEntity));
                     Log.d(TAG, "Debt from borrower: " + debt1.getBorrower() + " paid. Deleting debt");
                 } else {
-                    borrowers.get(borrowers.indexOf(sameDebtEntity)).setAmount(sameDebtEntity.getAmount());
                     database.userDao().updateAmount(sameDebtEntity);
                     adapter.notifyItemChanged(borrowers.indexOf(sameDebtEntity));
                     Log.d(TAG, "Found similar borrower: " + debt1.getBorrower() + " changed amount to: " + sameDebtEntity.getAmount());
                 }
             } else {
                 borrowers.add(debt1);
-                database.userDao().insert(userWithDebts, debt1);
-                adapter.notifyItemInserted(borrowers.size() - 1);
+                database.userDao().insertDebt(debt1);
+                //database.userDao().insert(userWithDebts, debt1);
+                adapter.notifyItemInserted(borrowers.size());
+                userWithDebts = database.userDao().getUserWithDebts(ActiveUser.getInstance().getUser().getUserName());
+                borrowers = userWithDebts.getDebts();
+                adapter.setmDataSet(borrowers);
                 Log.d(TAG, "Added new borrower: " + debt1.getBorrower() + " amount: " + debt1.getAmount());
             }
         };
