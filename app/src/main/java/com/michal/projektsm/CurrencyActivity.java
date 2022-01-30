@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DownloadManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,39 +35,49 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CurrencyActivity extends AppCompatActivity {
 
-
-
-    private Retrofit retrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://api.nbp.pl/api/exchangerates/rates/A/EUR/last/?format=json";
+        findViewById(R.id.btnPLN).setOnClickListener(v -> {
+            CurrencyConverter currencyConverter = CurrencyConverter.getInstance();
+            currencyConverter.setCurrencyName("PLN");
+            currencyConverter.setMultiplier(1.0f);
+        });
+        findViewById(R.id.btnEUR).setOnClickListener(v -> {
+            this.APIFunction("EUR");
+        });
+        findViewById(R.id.btnUSD).setOnClickListener(v -> {
+            this.APIFunction("USD");
+        });
+        findViewById(R.id.btnGBP).setOnClickListener(v -> {
+            this.APIFunction("GBP");
+        });
+    }
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        String currencyName = "";
-                        Double currencyMultipler = 0.0;
-                        try {
-                            currencyName=response.getString("code");
-                            currencyMultipler = response.getJSONArray("rates").getJSONObject(0).getDouble("mid");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
+    private void APIFunction(String currencyName) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://api.nbp.pl/api/exchangerates/rates/A/" + currencyName + "/last/?format=json";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                CurrencyConverter currencyConverter = CurrencyConverter.getInstance();
+                try {
+                    currencyConverter.setCurrencyName(response.getString("code"));
+                    currencyConverter.setMultiplier((float) response.getJSONArray("rates").getJSONObject(0).getDouble("mid"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                     }
                 });
         queue.add(request);
-
-
-
     }
 }
+

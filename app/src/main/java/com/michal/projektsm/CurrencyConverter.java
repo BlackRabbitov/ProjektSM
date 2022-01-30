@@ -51,6 +51,5 @@ public class CurrencyConverter {
             default:
                 return "Currency not handled";
         }
-
     }
 }
