@@ -59,7 +59,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_borrower, viewGroup, false);
+                .inflate(R.layout.item_expense, viewGroup, false);
 
         return new ViewHolder(v);
     }
@@ -70,12 +70,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
 
         viewHolder.getNameTextView().setText(mDataSet.get(position).getBorrower());
         viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount().floatValue()));
-        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount()));
-        if(mDataSet.get(position).getAmount() < 0){
-            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#FA2917"));
-        } else {
-            viewHolder.getAmountTextView().setTextColor(Color.parseColor("#2DDB3F"));
-        }
+        viewHolder.getAmountTextView().setText(String.valueOf(mDataSet.get(position).getAmount() * -1.0f));
     }
 
     @Override
