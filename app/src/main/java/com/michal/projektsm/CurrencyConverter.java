@@ -41,13 +41,13 @@ public class CurrencyConverter {
         switch(currencyName)
         {
             case "PLN":
-                return String.format("%.2f", (value * multiplier)) + "zł";
+                return String.format("%.2f", (value / multiplier)) + "zł";
             case "EUR":
-                return "€" + String.format("%.2f", (value * multiplier));
+                return "€" + String.format("%.2f", (value / multiplier));
             case "USD":
-                return "$" + String.format("%.2f", (value * multiplier));
+                return "$" + String.format("%.2f", (value / multiplier));
             case "GBP":
-                return "£" + String.format("%.2f", (value * multiplier));
+                return "£" + String.format("%.2f", (value / multiplier));
             default:
                 return "Currency not handled";
         }

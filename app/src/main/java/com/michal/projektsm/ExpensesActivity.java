@@ -100,7 +100,7 @@ public class ExpensesActivity extends AppCompatActivity {
             DebtEntity debt1 = new DebtEntity();
 
             debt1.setBorrower(((TextView) findViewById(R.id.etExpense)).getText().toString());
-            debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString())*-1.0f);
+            debt1.setAmount(Float.parseFloat(((TextView)findViewById(R.id.etAmount)).getText().toString()) * -1.0f * CurrencyConverter.getInstance().getMultiplier());
             debt1.setUserCreatorId(ActiveUser.getInstance().getUser().getId());
             // Check if there is debt with the same name
             sameExpenseEntity = null;
