@@ -1,18 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:orientation="vertical"
+    android:id="@+id/currencyLayout"
     tools:context=".CurrencyActivity">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="288dp"
-        android:text="Currency screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/purple_700"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@drawable/home_white_icon">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/changeValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/changeCurrency"
+        android:textColor="@color/white"
+        android:textSize="26sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/btnPL"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="@color/purple_700"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="292dp"
+            android:layout_weight="1"
+            android:text="PLN"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnEUR"
+            app:layout_constraintTop_toBottomOf="@+id/btnUSD" />
+
+        <Button
+            android:id="@+id/btnEUR"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="292dp"
+            android:backgroundTint="@color/purple_700"
+            android:layout_weight="1"
+            android:text="EUR"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnPL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGBP" />
+
+        <Button
+            android:id="@+id/btnUSD"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/purple_700"
+            android:layout_weight="1"
+            android:text="USD"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnPL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnGBP"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnGBP"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/purple_700"
+            android:layout_weight="1"
+            android:text="GBP"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnEUR"
+            app:layout_constraintEnd_toStartOf="@+id/btnUSD"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="237dp"
+            android:layout_height="234dp"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="388dp"
+            android:layout_marginEnd="94dp"
+            android:layout_marginBottom="44dp"
+            android:src="@mipmap/by_freepik_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

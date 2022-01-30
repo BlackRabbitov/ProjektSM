@@ -67,5 +67,8 @@
 
     <string name="accept_button">Accept</string>
 
+    <string name="changeCurrency">convert currency to your currency</string>
+
+
     <string name="api_error">Could not download API</string>
 </resources>
