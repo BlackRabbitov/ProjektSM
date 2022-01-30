@@ -70,4 +70,5 @@
 
     <string name="changeCurrency">przewalutuj na swoją walutę</string>
 
+    <string name="api_error">Błąd pobierania API</string>
 </resources>
