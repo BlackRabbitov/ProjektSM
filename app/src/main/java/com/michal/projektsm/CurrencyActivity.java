@@ -7,6 +7,7 @@ import android.app.DownloadManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -75,6 +76,7 @@ public class CurrencyActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.api_error), Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(request);
