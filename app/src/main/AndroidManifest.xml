@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjektSM">
         <activity
-            android:name=".Expenses"
-            android:exported="true" />
-        <activity
             android:name=".Categories"
             android:exported="true" />
         <activity
@@ -23,6 +20,9 @@
             android:exported="true" />
         <activity
             android:name=".BorrowerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpensesActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
