@@ -42,6 +42,9 @@ public abstract class UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     public abstract void updateAllDebts(List<DebtEntity> debtEntities);
 
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    public abstract void updateUser(UserEntity userEntity);
+
     @Insert
     public abstract void registerUser(UserEntity userEntity);
 
