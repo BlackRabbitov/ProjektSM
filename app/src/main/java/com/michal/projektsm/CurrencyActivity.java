@@ -82,19 +82,15 @@ public class CurrencyActivity extends AppCompatActivity {
             CurrencyConverter currencyConverter = CurrencyConverter.getInstance();
             currencyConverter.setCurrencyName("PLN");
             currencyConverter.setMultiplier(1.0f);
-            Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.pln_change), Toast.LENGTH_SHORT).show();
         });
         findViewById(R.id.btnEUR).setOnClickListener(v -> {
             this.APIFunction("EUR");
-            Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.eur_change), Toast.LENGTH_SHORT).show();
         });
         findViewById(R.id.btnUSD).setOnClickListener(v -> {
             this.APIFunction("USD");
-            Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.usd_change), Toast.LENGTH_SHORT).show();
         });
         findViewById(R.id.btnGBP).setOnClickListener(v -> {
             this.APIFunction("GBP");
-            Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.gbp_change), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -109,6 +105,7 @@ public class CurrencyActivity extends AppCompatActivity {
                 try {
                     currencyConverter.setCurrencyName(response.getString("code"));
                     currencyConverter.setMultiplier((float) response.getJSONArray("rates").getJSONObject(0).getDouble("mid"));
+                    Toast.makeText(CurrencyActivity.this, getApplicationContext().getString(R.string.change) + " " + currencyName, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

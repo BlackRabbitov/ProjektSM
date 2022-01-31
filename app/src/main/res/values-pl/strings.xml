@@ -72,8 +72,6 @@
 
     <string name="api_error">Błąd pobierania API</string>
 
-    <string name="pln_change">Zmiana waluty na PLN</string>
-    <string name="usd_change">Zmiana waluty na USD</string>
-    <string name="gbp_change">Zmiana waluty na GBP</string>
-    <string name="eur_change">Zmiana waluty na EUR</string>
+    <string name="change">Zmiana waluty na </string>
+
 </resources>
